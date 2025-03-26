@@ -1,8 +1,4 @@
-/*
-	Hyperspace by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+
 
 (function ($) {
   var $window = $(window),
@@ -181,6 +177,32 @@
     },
     enter: function () {
       // Activate project item by adding .visible class.
+      $(this).removeClass("inactive").addClass("visible");
+    },
+  });
+  // About Me Animation
+  $("#about .about-content").scrollex({
+    mode: "middle",
+    top: "-20vh",
+    bottom: "-20vh",
+    initialize: function () {
+      // Deactivate about content.
+      $(this).addClass("inactive");
+    },
+    enter: function () {
+      // Activate about content by adding .visible class.
+      $(this).removeClass("inactive").addClass("visible");
+    },
+  });
+
+  $("#about .about-image, #about .about-content").scrollex({
+    mode: "middle",
+    top: "-30vh", // Trigger earlier
+    bottom: "-30vh",
+    initialize: function () {
+      $(this).addClass("inactive");
+    },
+    enter: function () {
       $(this).removeClass("inactive").addClass("visible");
     },
   });
