@@ -3884,6 +3884,7 @@ input, select, textarea {
 		background-position: top right;
 		background-repeat: no-repeat;
 		background-size: cover;
+		height: 100vh
 	}
 
 		#intro p {
@@ -4385,4 +4386,229 @@ input, select, textarea {
 	.project-item .project-content p {
 		font-size: 0.8em;
 	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* About Me Section */
+#about.wrapper.style4 {
+	background: #000000;
+	/* Black background */
+	padding: 2em 0 2em 0;
+}
+
+#about .inner {
+	padding: 1em 0 1em 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	/* Center the photo and container horizontally */
+	align-items: center;
+	/* Center vertically */
+	gap: 4em;
+	/* Space between photo and white container */
+	flex-wrap: wrap;
+	/* Allow wrapping if needed */
+	max-width: 1600px;
+	/* Limit the width for better centering */
+	margin: 0 auto;
+	/* Center the content */
+}
+
+#about h1,
+#about p {
+	color: #c7c7c7;
+	/* White text for header and subheader */
+}
+
+.about-image {
+	width: 400px;
+	/* Fixed width for the photo (square) */
+	height: 300px;
+	/* Fixed height to make it square */
+	flex-shrink: 0;
+	opacity: 0;
+	/* Start invisible */
+	transform: translateX(-100px);
+	/* Start off-screen to the left */
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	/* Smooth transition */
+}
+
+.about-image img {
+	width: 100%;
+	height: 100%;
+	/* Fill the container */
+	border-radius: 0.5em;
+	/* Rounded corners */
+	box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+	/* White shadow on black background */
+	object-fit: cover;
+	/* Ensure the image covers the area without distortion */
+	display: block;
+	visibility: visible !important;
+	opacity: 1 !important;
+}
+
+.about-image.visible {
+	opacity: 1;
+	/* Fade in */
+	transform: translateX(0);
+	/* Slide into position */
+}
+
+.about-content {
+	width: 650px;
+	/* Same width as the photo */
+	height: 300px;
+	/* Same height as the photo (square) */
+	padding: 2em;
+	/* Padding inside the white container */
+	background: #e1e1e1da;
+	/* White background */
+	border-radius: 0.5em;
+	/* Rounded corners */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	/* Subtle shadow */
+	display: flex;
+	/* Use flexbox to center the text inside */
+	align-items: center;
+	/* Center the text vertically */
+	justify-content: center;
+	/* Center the text horizontally */
+	overflow: auto;
+	/* Add scrollbar if text overflows */
+	opacity: 0;
+	/* Start invisible */
+	transform: translateX(100px);
+	/* Start off-screen to the right */
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	/* Smooth transition */
+}
+
+.about-content.visible {
+	opacity: 1;
+	/* Fade in */
+	transform: translateX(0);
+	/* Slide into position */
+}
+
+/* Remove the old fade-in animation */
+.about-content {
+	/* Removed the old animation rules */
+}
+
+.about-text {
+	color: #000000;
+	/* Black text */
+	font-size: 1em;
+	line-height: 1.8;
+	text-align: left;
+	/* Center the text */
+}
+
+/* Responsive Design for About Me */
+@media screen and (max-width: 736px) {
+	#about .inner {
+		flex-direction: column;
+		/* Stack vertically on mobile */
+		align-items: center;
+		text-align: center;
+	}
+
+	.about-image {
+		width: 250px;
+		/* Slightly smaller on mobile */
+		height: 250px;
+		margin-bottom: 1em;
+	}
+
+	.about-content {
+		width: 250px;
+		/* Match the photo size on mobile */
+		height: 250px;
+		padding: 1.5em;
+		/* Slightly less padding on mobile */
+	}
+
+	.about-text {
+		font-size: 0.9em;
+		color: #000000;
+		/* Ensure black text on mobile */
+		text-align: center;
+		/* Center the text on mobile */
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Social Links */
+.social-links {
+	position: fixed;
+	top: 50%;
+	/* Center vertically */
+	right: 1em;
+	/* Position on the right side */
+	transform: translateY(-50%);
+	/* Adjust for vertical centering */
+	display: flex;
+	flex-direction: column;
+	/* Arrange icons vertically */
+	gap: 1.5em;
+	/* Space between icons */
+	z-index: 1000;
+	/* Ensure it stays above other elements */
+}
+
+.social-link {
+	color: #ffffff;
+	/* White icons */
+	font-size: 1.5em;
+	/* Icon size */
+	transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-link:hover {
+	color: #7a7a7a;
+	/* Pink-ish color on hover (matches your button style) */
+	transform: scale(1.2);
+	/* Slight zoom on hover */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 736px) {
+	.social-links {
+		display: none;
+		/* Hide on mobile to avoid clutter */
+	}
+}
+
+
+
+/* Style the emoji to match Font Awesome icons */
+.social-link .emoji {
+	font-size: 1em;
+	line-height: 1;
+	display: inline-block;
+	vertical-align: middle;
+	filter: grayscale(100%) brightness(250%);
+	/* Make the emoji white */
 }
