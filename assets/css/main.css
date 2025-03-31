@@ -3408,7 +3408,7 @@ input, select, textarea {
 
 					#header > nav > ul > li a {
 						border: 0;
-						color: rgb(148, 39, 39);
+						color: rgb(255, 255, 255);
 						display: inline-block;
 						font-size: 0.6em;
 						font-weight: bold;
@@ -3417,7 +3417,7 @@ input, select, textarea {
 					}
 
 						#header > nav > ul > li a:hover {
-							color: rgb(124, 21, 21);
+							color: rgb(255, 255, 255);
 						}
 
 						#header > nav > ul > li a.active {
@@ -3446,7 +3446,7 @@ input, select, textarea {
 				}
 
 				#header > nav {
-					border-top: solid 1px rgb(109, 57, 57);
+					border-top: solid 1px rgb(255, 255, 255);
 					text-align: inherit;
 				}
 
@@ -3856,7 +3856,7 @@ input, select, textarea {
 
 						#sidebar nav a:after {
 							background-image: none;
-							background-color: #b74e91;
+							background-color: #ffffff;
 						}
 
 		}
@@ -3870,44 +3870,135 @@ input, select, textarea {
 		}
 
 /* Intro */
+#intro {
+    background-attachment: fixed;
+    background-image: url("images/intro3.jpg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff;
+    padding: 10em 0 8em 0;
+    text-align: left; /* Default to left-aligned */
+    position: relative;
+}
 
-	#intro {
-		background-attachment: fixed;
-		background-image: url("images/intro3.jpg");
-		background-position: top right;
-		background-repeat: no-repeat;
-		background-size: cover;
-		height: 100vh
-	}
+#intro .inner {
+    max-width: 65em;
+    width: calc(100% - 6em);
+    margin: 0 0 0 6em; /* Left-aligned with margin */
+}
 
-		#intro p {
-			font-size: 1.25em;
-		}
+#intro h1 {
+    color: #ffffff;
+    font-size: 2em;
+    line-height: 1.25;
+}
 
-			@media screen and (max-width: 980px) {
+#intro p {
+    color: #ffffff;
+    font-size: 1.25em;
+    font-style: italic;
+    margin: 0 0 1.5em 0;
+}
 
-				#intro p br {
-					display: none;
-				}
+#intro .button {
+    margin-top: 1em;
+}
 
-			}
+/* Center content above 3000px */
+@media screen and (min-width: 3001px) {
+    #intro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 0;
+        text-align: center; /* Center the text */
+    }
 
-			@media screen and (max-width: 736px) {
+    #intro .inner {
+        width: 100%;
+        max-width: 40em; /* Reduced max-width for better centering */
+        margin: 0 auto; /* Center the inner container */
+    }
 
-				#intro p {
-					font-size: 1em;
-				}
+    #intro h1 {
+        font-size: 2.5em; /* Slightly larger for emphasis */
+    }
 
-			}
+    #intro p {
+        font-size: 1.5em;
+    }
+}
 
-		@media screen and (max-width: 1280px) {
+/* Adjustments for smaller screens (existing breakpoints) */
+@media screen and (max-width: 1280px) {
+    #intro {
+        padding: 8em 0 6em 0;
+    }
 
-			#intro {
-				background-attachment: scroll;
-			}
+    #intro .inner {
+        width: calc(100% - 4em);
+        margin: 0 0 0 4em;
+    }
+}
 
-		}
+@media screen and (max-width: 980px) {
+    #intro {
+        padding: 6em 0 4em 0;
+    }
 
+    #intro .inner {
+        width: calc(100% - 3em);
+        margin: 0 0 0 3em;
+    }
+
+    #intro h1 {
+        font-size: 1.75em;
+    }
+
+    #intro p {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    #intro {
+        padding: 4em 0 2em 0;
+    }
+
+    #intro .inner {
+        width: calc(100% - 2em);
+        margin: 0 0 0 2em;
+    }
+
+    #intro h1 {
+        font-size: 1.5em;
+    }
+
+    #intro p {
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #intro {
+        padding: 3em 0 1em 0;
+    }
+
+    #intro .inner {
+        width: calc(100% - 1em);
+        margin: 0 0 0 1em;
+    }
+
+    #intro h1 {
+        font-size: 1.25em;
+    }
+
+    #intro p {
+        font-size: 0.8em;
+    }
+}
 
 /* Timeline Container */
 .timeline {
@@ -4131,256 +4222,216 @@ input, select, textarea {
 
 
 /* Project Grid Layout */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-  gap: 2em; /* Space between items */
-  padding: 2em 0;
-}
-
-/* Project Item */
-.project-item {
-  display: flex;
-  background: #1a1a1a; /* Dark background like Netflix */
-  border-radius: 0.5em;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover Effect */
-.project-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-}
-
-/* Project Image */
-.project-item .project-image {
-  width: 50%; /* Half the component */
-  overflow: hidden;
-}
-
-.project-item .project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure image scales properly */
-  display: block;
-}
-
-/* Project Content */
-.project-item .project-content {
-  width: 50%; /* Half the component */
-  padding: 1.5em;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.project-item .project-content h2 {
-  font-size: 1.2em;
-  margin-bottom: 0.5em;
-  color: #ffffff;
-}
-
-.project-item .project-content p {
-  font-size: 0.9em;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
-}
-
 /* Section Styling */
 #two.wrapper.style3 {
-  background: #bc4a4a; /* Dark background like Netflix */
+    background: #000000;
+    padding: 6em 0;
+    text-align: center; /* Center-align all text */
+}
+
+#two .inner {
+    max-width: 75em;
+    width: calc(100% - 6em);
+    margin: 0 auto; /* Centers the inner container */
 }
 
 #two h1,
 #two p {
-  color: #ffffff;
+    color: #ffffff;
 }
 
-/* Fade-in Animation */
-.project-item {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+#two h1 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    text-align: center; /* Explicitly center the heading */
 }
-
-.project-item.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive Design */
-@media screen and (max-width: 980px) {
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row on medium screens */
-  }
-}
-
-@media screen and (max-width: 736px) {
-  .project-grid {
-    grid-template-columns: 1fr; /* 1 item per row on small screens */
-  }
-
-  .project-item {
-    flex-direction: column;
-  }
-
-  .project-item .project-image,
-  .project-item .project-content {
-    width: 100%; /* Full width on mobile */
-  }
-
-  .project-item .project-image img {
-    height: 200px; /* Fixed height for consistency on mobile */
-  }
-
-  .project-item .project-content {
-    padding: 1em;
-  }
-}
-
 
 /* Project Grid Layout */
 .project-grid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	/* 3 items per row */
-	gap: 2em;
-	padding: 2em 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    gap: 2em;
+    justify-items: center; /* Centers each project item within its grid cell */
+    justify-content: center; /* Centers the grid itself within its parent */
+    padding: 2em 0;
+    max-width: 100%;
 }
 
 /* Project Item */
 .project-item {
-	display: flex;
-	flex-direction: column;
-	/* Stack image and content vertically */
-	background: #171717d6;
-	border-radius: 0.5em;
-	overflow: hidden;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	height: 400px;
-	/* Fixed height for consistency */
+    display: flex;
+    flex-direction: column; /* Stack image and content vertically */
+    background: #171717d6;
+    border-radius: 0.5em;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 500px; /* Fixed height for consistency */
+    width: 100%;
+    max-width: 500px; /* Limit width for better centering */
 }
 
 /* Hover Effect */
 .project-item:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
 }
 
 /* Project Image */
 .project-item .project-image {
-	width: 100%;
-	/* Full width */
-	height: 50%;
-	/* Top half of the component */
-	overflow: hidden;
+    width: 100%; /* Full width */
+    height: 50%; /* Top half of the component */
+    overflow: hidden;
 }
 
 .project-item .project-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	/* Ensure image scales properly */
-	display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image scales properly */
+    display: block;
 }
 
 /* Project Content */
 .project-item .project-content {
-	width: 100%;
-	/* Full width */
-	height: 50%;
-	/* Bottom half of the component */
-	padding: 1em;
-	color: #ffffff;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	text-align: center;
-	/* Center text for better appearance */
+    width: 100%; /* Full width */
+    height: 50%; /* Bottom half of the component */
+    padding: 1em;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center; /* Center text for better appearance */
 }
 
+/* Project Content Heading and Paragraph */
 .project-item .project-content h2 {
-	font-size: 1.2em;
-	margin-bottom: 0.5em;
-	color: #ffffff;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: #ffffff;
 }
 
 .project-item .project-content p {
-	font-size: 0.9em;
-	line-height: 1.6;
-	color: rgba(255, 255, 255, 0.8);
-}
-
-/* Section Styling */
-#two.wrapper.style3 {
-	background: #000000;
-}
-
-#two h1,
-#two p {
-	color: #ffffff;
+    font-size: 0.9em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Fade-in Animation */
 .project-item {
-	opacity: 0;
-	transform: translateY(20px);
-	transition: opacity 0.5s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.3s ease;
 }
 
 .project-item.visible {
-	opacity: 1;
-	transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Responsive Design */
-@media screen and (max-width: 980px) {
-	.project-grid {
-		grid-template-columns: repeat(2, 1fr);
-		/* 2 items per row on medium screens */
-	}
+@media screen and (max-width: 1280px) {
+    #two.wrapper.style3 {
+        padding: 5em 0;
+    }
 
-	.project-item {
-		height: 450px;
-		/* Slightly taller on medium screens */
-	}
+    #two .inner {
+        width: calc(100% - 4em);
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    }
+
+    .project-item {
+        max-width: 300px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    #two.wrapper.style3 {
+        padding: 4em 0;
+    }
+
+    #two .inner {
+        width: calc(100% - 3em);
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row on medium screens */
+    }
+
+    .project-item {
+        height: 450px; /* Slightly taller on medium screens */
+        max-width: 250px;
+    }
+
+    #two h1 {
+        font-size: 1.35em;
+    }
 }
 
 @media screen and (max-width: 736px) {
-	.project-grid {
-		grid-template-columns: 1fr;
-		/* 1 item per row on small screens */
-	}
+    #two.wrapper.style3 {
+        padding: 3em 0;
+    }
 
-	.project-item {
-		height: 500px;
-		/* Taller on mobile for better readability */
-	}
+    #two .inner {
+        width: calc(100% - 2em);
+    }
 
-	.project-item .project-image {
-		height: 60%;
-		/* Larger image on mobile */
-	}
+    .project-grid {
+        grid-template-columns: 1fr; /* 1 item per row on small screens */
+        gap: 1.5em;
+    }
 
-	.project-item .project-content {
-		height: 40%;
-		/* Adjust content height */
-		padding: 0.5em;
-	}
+    .project-item {
+        height: 500px; /* Taller on mobile for better readability */
+        max-width: 100%; /* Full width on small screens */
+    }
 
-	.project-item .project-content h2 {
-		font-size: 1em;
-	}
+    .project-item .project-image {
+        height: 60%; /* Larger image on mobile */
+    }
 
-	.project-item .project-content p {
-		font-size: 0.8em;
-	}
+    .project-item .project-content {
+        height: 40%; /* Adjust content height */
+        padding: 0.5em;
+    }
+
+    .project-item .project-content h2 {
+        font-size: 1em;
+    }
+
+    .project-item .project-content p {
+        font-size: 0.8em;
+    }
+
+    #two h1 {
+        font-size: 1.25em;
+    }
 }
 
+@media screen and (max-width: 480px) {
+    #two.wrapper.style3 {
+        padding: 2em 0;
+    }
+
+    #two .inner {
+        width: calc(100% - 1em);
+    }
+
+    .project-grid {
+        gap: 1em;
+    }
+
+    .project-item {
+        height: 450px; /* Slightly shorter for very small screens */
+    }
+
+    #two h1 {
+        font-size: 1.1em;
+    }
+}
 
 
 
@@ -4397,7 +4448,7 @@ input, select, textarea {
 #about.wrapper.style4 {
 	background: #000000;
 	/* Black background */
-	padding: 2em 0 2em 0;
+	padding: 6em 0;
 }
 
 #about .inner {
@@ -4412,8 +4463,9 @@ input, select, textarea {
 	/* Space between photo and white container */
 	flex-wrap: wrap;
 	/* Allow wrapping if needed */
-	max-width: 1600px;
+	max-width: 80em;
 	/* Limit the width for better centering */
+	width: calc(100% - 6em);
 	margin: 0 auto;
 	/* Center the content */
 }
@@ -4425,32 +4477,19 @@ input, select, textarea {
 }
 
 .about-image {
-	width: 400px;
-	/* Fixed width for the photo (square) */
-	height: 300px;
-	/* Fixed height to make it square */
-	flex-shrink: 0;
-	opacity: 0;
-	/* Start invisible */
-	transform: translateX(-100px);
-	/* Start off-screen to the left */
-	transition: opacity 0.5s ease, transform 0.5s ease;
-	/* Smooth transition */
+	flex: 0 0 auto; /* Fixed size, no growing/shrinking */
+    width: 30em; /* Match the dialogue box width for balance */
+    padding-right: 2em;
+    opacity: 0;
+    transform: translateX(-4em);
+    transition: opacity 1s ease, transform 1s ease;
+    text-align: center; /* Center the image */
 }
 
 .about-image img {
-	width: 100%;
-	height: 100%;
-	/* Fill the container */
-	border-radius: 0.5em;
-	/* Rounded corners */
-	box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-	/* White shadow on black background */
-	object-fit: cover;
-	/* Ensure the image covers the area without distortion */
-	display: block;
-	visibility: visible !important;
-	opacity: 1 !important;
+    width: 100%;
+    max-width: 30em;
+    border-radius: 0.35em;
 }
 
 .about-image.visible {
@@ -4461,32 +4500,20 @@ input, select, textarea {
 }
 
 .about-content {
-	width: 650px;
-	/* Same width as the photo */
-	height: 300px;
-	/* Same height as the photo (square) */
-	padding: 2em;
-	/* Padding inside the white container */
-	background: #e1e1e1da;
-	/* White background */
-	border-radius: 0.5em;
-	/* Rounded corners */
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-	/* Subtle shadow */
-	display: flex;
-	/* Use flexbox to center the text inside */
-	align-items: center;
-	/* Center the text vertically */
-	justify-content: center;
-	/* Center the text horizontally */
-	overflow: auto;
-	/* Add scrollbar if text overflows */
-	opacity: 0;
-	/* Start invisible */
-	transform: translateX(100px);
-	/* Start off-screen to the right */
-	transition: opacity 0.5s ease, transform 0.5s ease;
-	/* Smooth transition */
+    flex: 0 0 auto; /* Fixed size, no growing/shrinking */
+    width: 30em; /* Fixed width */
+    height: 30em; /* Fixed height */
+    padding: 2em;
+    opacity: 0;
+    transform: translateX(4em);
+    transition: opacity 1s ease, transform 1s ease;
+    text-align: center; /* Center the text inside */
+    background: #d6d6d6; /* Add a background for the dialogue box */
+    border-radius: 0.35em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
 .about-content.visible {
