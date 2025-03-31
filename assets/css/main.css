@@ -3799,7 +3799,7 @@ input, select, textarea {
 			opacity: 0;
 		}
 
-		@media screen and (max-width: 1280px) {
+		@media screen and (max-width: 5000px) {
 
 			#sidebar {
 				height: 3.5em;
@@ -3861,7 +3861,7 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 736px) {
+		@media screen and (max-width: 500px) {
 
 			#sidebar {
 				display: none;
