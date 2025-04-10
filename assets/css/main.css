@@ -1561,28 +1561,21 @@ input, select, textarea {
 
 		
 
-/* Intro */
 #intro {
     background-image: url("images/intro3.jpg");
-    background-size: contain; /* Ensures the full image is visible, scaled to fit */
-    background-position: center center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents tiling */
-    background-color: #d2d2d2; /* Matches the gray background in Screenshot 9 if image doesn’t cover fully */
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: contain;
     color: #ffffff;
-    min-height: 100vh; /* Full viewport height */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    text-align: center; /* Center text */
+    padding: 10em 0 8em 0;
+    text-align: left; /* Default to left-aligned */
     position: relative;
-    padding: 2em; /* Minimal padding for flexibility */
 }
 
 #intro .inner {
     max-width: 65em;
-    width: 90%; /* More flexible width */
-    margin: 0 auto; /* Centers the content block */
+    width: calc(100% - 6em);
+    margin: 0 0 0 6em; /* Left-aligned with margin */
 }
 
 #intro h1 {
@@ -1602,98 +1595,109 @@ input, select, textarea {
     margin-top: 1em;
 }
 
-/* Above 3000px */
+/* Center content above 3000px */
 @media screen and (min-width: 3000px) {
     #intro {
-        background-image: url("images/intro3.jpg");
-        background-size: contain;
-        background-position: center center;
+        display: flex;
+		background-attachment: fixed;
+		background-image: url("images/small-intro.jpg");
+        justify-content: center;
+        align-items: center;
         min-height: 100vh;
-        padding: 4em 0;
+        padding: 0;
+        text-align: center; /* Center the text */
     }
 
     #intro .inner {
-        max-width: 40em;
+        width: 100%;
+        max-width: 40em; /* Reduced max-width for better centering */
+        margin: 0 auto; /* Center the inner container */
     }
 
     #intro h1 {
-        font-size: 2.5em;
+        font-size: 2.5em; /* Slightly larger for emphasis */
+    }
+
+    #intro p {
+        font-size: 1.5em;
     }
 }
 
-/* 1280px and below */
+/* Adjustments for smaller screens (existing breakpoints) */
 @media screen and (max-width: 1280px) {
     #intro {
-        background-image: url("images/intro3.jpg"); /* Use the same image for consistency */
-        background-size: contain;
-        background-position: center center;
-        min-height: 80vh; /* Adjust for medium screens */
-        padding: 2em;
+		display: flex;
+		background-attachment: fixed;
+		background-image: url("images/small-intro.jpg");
+        padding: 8em 0 6em 0;
     }
 
     #intro .inner {
-        width: 85%;
+        width: calc(100% - 4em);
+        margin: 0 0 0 4em;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    #intro {
+        padding: 6em 0 4em 0;
+    }
+
+    #intro .inner {
+        width: calc(100% - 3em);
+        margin: 0 0 0 3em;
     }
 
     #intro h1 {
         font-size: 1.75em;
     }
+
+    #intro p {
+        font-size: 1em;
+    }
 }
 
-/* 980px and below */
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 736px) {
     #intro {
-        background-image: url("images/intro3.jpg");
-        background-size: contain;
-        background-position: center center;
-        min-height: 70vh; /* Shorter for smaller screens */
-        padding: 1.5em;
+		display: flex;
+		background-attachment: fixed;
+		background-image: url("images/small-intro.jpg");
+        padding: 4em 0 2em 0;
     }
 
     #intro .inner {
-        width: 80%;
+        width: calc(100% - 2em);
+        margin: 0 0 0 2em;
     }
 
     #intro h1 {
         font-size: 1.5em;
     }
+
+    #intro p {
+        font-size: 0.9em;
+    }
 }
 
-/* 736px and below */
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 480px) {
     #intro {
-        background-image: url("images/intro3.jpg");
-        background-size: contain;
-        background-position: center center;
-        min-height: 60vh; /* Mobile height */
-        padding: 1em;
+        padding: 3em 0 1em 0;
+		display: flex;
+		background-attachment: fixed;
+		background-image: url("images/small-intro.jpg");
     }
 
     #intro .inner {
-        width: 75%;
+        width: calc(100% - 1em);
+        margin: 0 0 0 1em;
     }
 
     #intro h1 {
         font-size: 1.25em;
     }
-}
 
-/* 480px and below */
-@media screen and (max-width: 480px) {
-    #intro {
-        background-image: url("images/intro3.jpg");
-        background-size: contain;
-        background-position: center center;
-        min-height: 50vh; /* Minimal height for small screens */
-        padding: 0.5em;
-    }
-
-    #intro .inner {
-        width: 70%;
-    }
-
-    #intro h1 {
-        font-size: 1em;
+    #intro p {
+        font-size: 0.8em;
     }
 }
 
