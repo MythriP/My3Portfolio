@@ -93,6 +93,44 @@
         #section5 {
             background-color: #916c7e99;
         }
+        #wlt {
+            height: 740px;
+              display: flex;
+  justify-content: center;   /* centers the images horizontally */
+  align-items: center;       /* aligns vertically (in case you need it later) */
+  gap: 100px;                 /* adds space between the two images */
+  padding: 50px 0;  
+        }
+#frogcat {
+  display: flex;
+  justify-content: center;   /* centers the images horizontally */
+  align-items: center;       /* aligns vertically (in case you need it later) */
+  gap: 50px;                 /* adds space between the two images */
+  padding: 50px 0;           /* optional: gives top/bottom breathing room */
+}
+#fish {
+  display: flex;
+  justify-content: center;   /* centers the images horizontally */
+  align-items: center;       /* aligns vertically (in case you need it later) */
+  gap: 50px;                 /* adds space between the two images */
+  padding: 0 0;           /* optional: gives top/bottom breathing room */
+}
+#wlt .offset-img {
+  margin-top: 230px; /* Pushes just the 3rd image down */
+}
+        .right-image {
+            position: absolute;
+            right: 150px;     
+        }
+        .left-image {
+            position: absolute;
+            left: 150px;     
+        }
+        .center-image {
+            position: absolute;    
+            left: 33%; 
+        }
+
     </style>
 </head>
 
@@ -129,7 +167,7 @@
 
     <div id="section4" class="section">
         <div class="text">
-            <h1> <span style="color: #284023bd;font-size: 90px"> PLEASE GO BACK! <br>-STILL UNDER CONSTRUCTION :(</span></h1>
+            <h1> <span style="color: #284023bd;font-size: 90px"> PLEASE GO BACK! <br>UNDER CONSTRUCTION :(</span></h1>
             <h1><span style="color: #284023c9;font-size: 90px">UNDER CONSTRUCTION :(</span></h1>
             <h1><span style="color: #284023d3;font-size: 100px">UNDER CONSTRUCTION :(</span></h1>
             <h1><span style="color: #284023f6;font-size: 110px">UNDER CONSTRUCTION :(</span></h1>
@@ -142,22 +180,29 @@
 
 <div style="width: 1440px; height: 164px; position: relative; background: white; overflow: hidden">
     <div
-        style="width: 808px; height: 139px; left: 330px; top: 50px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: black; font-size: 36px; font-family: EB Garamond; font-style: italic; font-weight: 400; line-height: 54px; word-wrap: break-word">
+        style="height: 139px; top: 50px; position: center; justify-content: center; display: flex;align-items: center; flex-direction: column; color: black; font-size: 36px; font-family: EB Garamond; font-style: italic; font-weight: 400; line-height: 54px; word-wrap: break-word">
         This is called “why am I like this?” section of my life </div>
     </div>
-    <img style="width: 584px; height: 701px" src="https://placehold.co/584x701" />
-    <img style="width: 330px; height: 701px" src="https://placehold.co/330x701" />
-    <img style="width: 321px; height: 934px; transform: rotate(90deg); transform-origin: top left; border: 1px #A19090 solid"
-        src="https://placehold.co/321x934" />
+    <div id="wlt">
+    <img style="width: 330px; height: 701px" src="/assets/css/images/eye.jpg"  />
+    <img style="width: 584px; height: 701px;align-items: center" src="/assets/css/images/girl.jpg"  />
+    <img style="width: 321px; height: 934px; top:300px" class="offset-img" src="/assets/css/images/scratch.jpg" />
+    </div>
+    <br>
     <div
         style="width: 1026px; height: 192px; position: relative; background: #D77C7A; overflow: hidden; outline: 1px black solid; outline-offset: -1px">
         <div
             style="width: 800px; height: 132px; left: 166px; top: 37px; position: absolute; color: black; font-size: 40px; font-family: EB Garamond; font-style: italic; font-weight: 700; line-height: 60px; word-wrap: break-word">
             The chaos lives. The creativity thrives. And the productivity? Questionable - but fabulous.</div>
     </div>
-    <img style="width: 508px; height: 677px" src="https://placehold.co/508x677" />
-    <img style="width: 506px; height: 675px" src="https://placehold.co/506x675" />
-    <img style="width: 652px; height: 587px" src="https://placehold.co/652x587" />
+    <div id="frogcat">
+    <img style="width: 508px; height: 677px" src="/assets/css/images/catmy3.jpeg" />
+    <img style="width: 300px; height: 755px" src="/assets/css/images/unfinished.jpg" />
+    <img style="width: 506px; height: 675px" src="/assets/css/images/frog.jpeg" />
+    </div>
+    <div id="fish">
+    <img style="width: 652px; height: 587px;" src="/assets/css/images/fish.jpeg" />
+    </div>
     <div
         style="width: 1035px; height: 730px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #0004FF; font-size: 96px; font-family: EB Garamond; font-weight: 600; line-height: 105.60px; word-wrap: break-word">
         WELL, <br />I GUESS I WILL HAVE TO WAIT TO TAKE GOOD PICTURES :) </div>
@@ -171,7 +216,8 @@
                 Told ya!
             </p>
             <h1><span style="color: #0015ff;font-size: 168px">LOADING!</span></h1>
-            <h2><span style="color: #fffb00; font-size: 60px"><a href="https://www.ted.com/profiles/31370115" target="_blank" rel="noopener noreferrer">My mood on shuffle</a></span></h2>
+            <h2><span style="color: #fffb00; font-size: 60px"><a href="https://www.ted.com/profiles/31370115" target="_blank"
+                        rel="noopener noreferrer">My mood on shuffle</a></span></h2>
         </div>
     </div>
 
