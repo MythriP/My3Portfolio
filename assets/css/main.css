@@ -1567,7 +1567,7 @@ input, select, textarea {
     background-image: url("images/intro3.jpg");
     background-position: top center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     color: #ffffff;
     padding: 10em 0 8em 0;
     text-align: left; /* Default to left-aligned */
