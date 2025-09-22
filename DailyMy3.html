@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
+    <title> : ) </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+        }
+
+        h1 {
+            font-family: Arial, sans-serif;
+        }
+
+        p {
+            font-size: 24px;
+        }
+
+        .section {
+            height: 2000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            gap: 40px;
+        }
+
+        .section img {
+            width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .section .text {
+            max-width: 90%;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        /* Vlog Section Styles */
+        .vlog-section {
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 60px 30px;
+            gap: 40px;
+        }
+
+        .vlog-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .vlog-header h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .vlog-header p {
+            font-size: 1.4em;
+            color: #cccccc;
+            font-style: italic;
+        }
+
+        .vlog-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .vlog-post {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .vlog-post:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .vlog-image {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+            width: 380px;
+            flex-shrink: 0;
+        }
+
+        .vlog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .vlog-post:hover .vlog-image img {
+            transform: scale(1.1);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .play-button:hover {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .vlog-content {
+            padding: 35px;
+            color: white;
+            flex: 1;
+        }
+
+        .vlog-content h3 {
+            font-size: 2.2em;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .vlog-date {
+            color: #4ecdc4;
+            font-size: 1em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .vlog-description {
+            color: #cccccc;
+            font-size: 1.5em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-image.active {
+            opacity: 1;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active,
+        .dot:hover {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* Clickable WeZaap post hover effect */
+        .vlog-post[style*="cursor: pointer"]:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3) !important;
+        }
+
+        /* Graduation Image Special Styling */
+        .graduation-image {
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .graduation-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center bottom;
+        }
+
+        /* Pullr post - adjust for wider/landscape image */
+        .pullr-image {
+            height: 260px;
+            width: 400px;
+        }
+
+        .pullr-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+        }
+
+        /* Hackathon post - optimize for carousel images */
+        .hackathon-image {
+            height: 280px;
+            width: 400px;
+        }
+
+        .hackathon-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Responsive Design for Vlog Section */
+        @media (max-width: 768px) {
+            .vlog-post {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .vlog-image,
+            .pullr-image,
+            .hackathon-image,
+            .graduation-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .vlog-header h2 {
+                font-size: 2.2em;
+            }
+
+            .vlog-section {
+                padding: 40px 15px;
+            }
+        }
+
+
+
+        #Note {
+            background-color: #4a6083b5;
+            height: auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        #AIntro {
+            background-color: #ffd6a5;
+            background-image: url('/assets/css/images/AIntro.jpg');
+            height: auto;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: flex-start;
+            padding: 70px 170px;
+            gap: 20px;
+        }
+
+        #AIntro .text {
+            max-width: 50%;
+        }
+
+        #skills {
+            background-color: #447655a1;
+            background-image: url('/assets/css/images/cat.jpg');
+            height: auto;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: left;
+            justify-content: flex-end;
+            padding: 170px 170px;
+            gap: 70px;
+        }
+
+
+
+        #section4 {
+            background-color: #000000;
+        }
+
+        #section5 {
+            background-color: #916c7e99;
+        }
+
+        #wlt {
+            height: 740px;
+            display: flex;
+            justify-content: center;
+            /* centers the images horizontally */
+            align-items: center;
+            /* aligns vertically (in case you need it later) */
+            gap: 100px;
+            /* adds space between the two images */
+            padding: 50px 0;
+        }
+
+        #frogcat {
+            display: flex;
+            justify-content: center;
+            /* centers the images horizontally */
+            align-items: center;
+            /* aligns vertically (in case you need it later) */
+            gap: 50px;
+            /* adds space between the two images */
+            padding: 50px 0;
+            /* optional: gives top/bottom breathing room */
+        }
+
+        #fish {
+            display: flex;
+            justify-content: center;
+            /* centers the images horizontally */
+            align-items: center;
+            /* aligns vertically (in case you need it later) */
+            gap: 50px;
+            /* adds space between the two images */
+            padding: 0 0;
+            /* optional: gives top/bottom breathing room */
+        }
+
+        #wlt .offset-img {
+            margin-top: 230px;
+            /* Pushes just the 3rd image down */
+        }
+
+        .right-image {
+            position: absolute;
+            right: 150px;
+        }
+
+        .left-image {
+            position: absolute;
+            left: 150px;
+        }
+
+        .center-image {
+            position: absolute;
+            left: 33%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="Note" class="section">
+        <div class="text">
+            <h1><span style="color: #ffd6a5;font-size: 68px"> ~ Welcome to the unstructured zone! ~ </span></h1>
+            <p><span style="color: #ffd6a5;">*<b> * </b>*<b> * </b>*<b> * </b>*</span></p>
+            <p><span style="color: #ffd6a5; text-align:center;"><i>{ - I am a proud collector of participation ribbons
+                        (well, may be a couple winning too), so here we go... }</i></span></p>
+
+        </div>
+    </div>
+
+    <div id="AIntro" class="section">
+        <div class="text">
+            <p><span style="color: #3a6649f8;;">Heyaaaaaaaaaaaa!
+                    <br>This page might not scream “corporate-ready,” but hey, it’s still a part of who I am.
+                    I wasn’t planning to include it, but once I started putting everything I do on one page, it felt
+                    wrong to leave this part out.
+                    <br><i>(Slight regret? Maybe. But we move on)</i>
+                    <br>I do things that are chaotic, creative - and sometimes completely unnecessary.
+                    <br>Deep down I’m low-key hoping no one actually clicks on this section, but again,
+                    this makes me <i>me.</i></span></p>
+            <p></p>
+        </div>
+    </div>
+
+    <div id="skills" class="section">
+
+        <div class="text">
+            <h1><span style="color: #fffb00;font-size: 168px">LETS GO!</span></h1>
+            <p></p>
+        </div>
+    </div>
+
+    <div id="section4" class="vlog-section">
+        <div class="vlog-header">
+            <h2>Probably Uncool, Definitely Me</h2>
+            <p>Because social media is too mainstream, so here we are - Unfiltered. Unoptimized. Unapologetic</p>
+        </div>
+
+        <div class="vlog-grid">
+
+
+
+            <!-- Vlog Post 2 - WeZaap v2 Launch! -->
+            <a href="https://we-zaap-cur.vercel.app/" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="vlog-post" style="cursor: pointer; transition: transform 0.3s ease;">
+                    <div class="vlog-image">
+                        <img src="/assets/css/images/v2.png" alt="WeZaap v2 Launch" />
+                    </div>
+                    <div class="vlog-content">
+                        <h3>⚡️ WeZaap! v2 is LIVE ⚡️</h3>
+                        <p class="vlog-date">September 2025</p>
+                        <p class="vlog-description">YESSS - Version 2 is finally here and I'm screaminggg!!! This one's
+                            a
+                            major glow-up from v1:<br>Less hands-on, more automatic <br>Smarter, more accurate, way more
+                            human-like<br>Feedback so good you can actually download it and work on
+                            yourself<br>Basically: v1 walked, so v2 could run. 🏃💨<br>Go check it out!!</p>
+                    </div>
+                </div>
+            </a>
+            <!-- Vlog Post 1 - Red Hat Journey -->
+            <div class="vlog-post">
+                <div class="vlog-image">
+                    <img src="/assets/css/images/redhat.jpeg" alt="Red Hat Experience" />
+                </div>
+                <div class="vlog-content">
+                    <h3>Red Hat Has My Heart (Even if the Job Doesn't Yet)</h3>
+                    <p class="vlog-date">Sept 11th, 2025</p>
+                    <p class="vlog-description">Won't lie - this one hurt. I messed up in the third round, and it
+                        stings.<br>But at the same time, this feels like a big turning point in my academic journey.
+                        The process made me realize exactly what I need to work on. I spent 4 days digging into
+                        Kubernetes, and it opened my eyes to how much there is still to learn.<br>Red Hat is still
+                        the company I love, and someday, I want to be part of it :)</p>
+                </div>
+            </div>
+
+            <!-- Vlog Post 7 - Pullr AI Landing Page Update -->
+            <a href="https://pullr.vercel.app/" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="vlog-post" style="cursor: pointer; transition: transform 0.3s ease;">
+                    <div class="vlog-image">
+                        <img src="/assets/css/images/pullr2.png" alt="Pullr AI Landing Page" />
+                    </div>
+                    <div class="vlog-content">
+                        <h3>Pullr Update - AI Built Our Landing Page?!</h3>
+                        <p class="vlog-date">July 2025</p>
+                        <p class="vlog-description">So here's the thing - we just wanted to mess around with some AI
+                            tools,
+                            try a couple of algorithms… and somehow ended up with a whole landing page. Built using
+                            Cursor +
+                            a mix of other tools.<br>It was so simple. So easy. Like… mind-blowing.<br>The wild
+                            part? People who don't even know how to code can now spin up projects like this. Lowkey
+                            scary
+                            but also kinda exciting. Guess I'm learning to embrace the chaos!</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Vlog Post 8 - Project Pullr Launch! -->
+            <div class="vlog-post">
+                <div class="vlog-image pullr-image">
+                    <img src="/assets/css/images/pullrintro.jpeg" alt="Project Pullr Launch" />
+                </div>
+                <div class="vlog-content">
+                    <h3>Let the Games Begin</h3>
+                    <p class="vlog-date">June 16th, 2025</p>
+                    <p class="vlog-description">We all have that "one idea" we keep talking about but never actually
+                        start. Well… this is me (okay, us 😅) finally doing the thing. After too many brainstorming
+                        sessions and a borderline ridiculous naming debate, we landed on Pullr. (Yes, it took forever.
+                        Yes, it's worth it.) <br>Now it's time for the real fun: late(even sleepless) nights, messy
+                        whiteboards, and building something we think actually matters. <br>Stay tuned—because
+                        Pullr is just getting started.</p>
+                </div>
+            </div>
+
+            <!-- Vlog Post 6 - LaunchX First Day -->
+            <div class="vlog-post">
+                <div class="vlog-image">
+                    <img src="/assets/css/images/launchx1.jpeg" alt="LaunchX First Day" />
+                </div>
+                <div class="vlog-content">
+                    <h3>First Day @ LaunchX</h3>
+                    <p class="vlog-date">June 2nd, 2025</p>
+                    <p class="vlog-description">Officially Day 1! I've always been a fan of entrepreneurship,
+                        and this summer I get to dive right into it with LaunchX 💡. Super excited to be part of
+                        something so special - <br>helping people build the entrepreneurial mindset: spotting
+                        opportunities,
+                        prototyping ideas(building applications, fine tuning models and much more), user testing,
+                        working
+                        A LOT with AI. <br>Here's to a summer full of ideas,
+                        experiments, and probably way too many sticky notes. Let's gooo!</p>
+                </div>
+            </div>
+
+            <!-- Vlog Post 5 - Graduation! -->
+            <div class="vlog-post">
+                <div class="vlog-image graduation-image">
+                    <img src="/assets/css/images/grad.jpeg" alt="Graduation Day" />
+                </div>
+                <div class="vlog-content">
+                    <h3>Masters in Computer Science</h3>
+                    <p class="vlog-date">May 11th, 2025</p>
+                    <p class="vlog-description">The one where I graduated.</p>
+                </div>
+            </div>
+
+            <!-- Vlog Post 4 - Last Day at UNT Libraries -->
+            <div class="vlog-post">
+                <div class="vlog-image carousel-container">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track">
+                            <img src="/assets/css/images/lspark1.jpeg" alt="Last Day at UNT Libraries 1"
+                                class="carousel-image active" />
+                            <img src="/assets/css/images/lspak2.jpeg" alt="Last Day at UNT Libraries 2"
+                                class="carousel-image" />
+                        </div>
+                        <button class="carousel-btn prev-btn" onclick="changeSlide(this, -1)">❮</button>
+                        <button class="carousel-btn next-btn" onclick="changeSlide(this, 1)">❯</button>
+                        <div class="carousel-dots">
+                            <span class="dot active" onclick="currentSlide(this, 1)"></span>
+                            <span class="dot" onclick="currentSlide(this, 2)"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="vlog-content">
+                    <h3>Last Day at UNT Libraries</h3>
+                    <p class="vlog-date">May 10th, 2025</p>
+                    <p class="vlog-description">Well, 2 years went by just like that. The experience I've gained here is
+                        something I'll always be grateful for. This has been such a fun place to work—the kind where you
+                        get the freedom to pitch your own ideas, build your own projects, and just make things happen.
+                        It's hard to say goodbye, but I guess it's time. Spark, thanks for everything!</p>
+                </div>
+            </div>
+
+            <!-- Vlog Post 3 - Hackathon Win! -->
+            <div class="vlog-post">
+                <div class="vlog-image hackathon-image carousel-container">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track">
+                            <img src="/assets/css/images/hackathon1.jpeg" alt="Hackathon 1"
+                                class="carousel-image active" />
+                            <img src="/assets/css/images/hackathon2.jpeg" alt="Hackathon 2" class="carousel-image" />
+                            <img src="/assets/css/images/hackathon3.jpeg" alt="Hackathon 3" class="carousel-image" />
+                            <img src="/assets/css/images/hackathon4.jpeg" alt="Hackathon 4" class="carousel-image" />
+                        </div>
+                        <button class="carousel-btn prev-btn" onclick="changeSlide(this, -1)">❮</button>
+                        <button class="carousel-btn next-btn" onclick="changeSlide(this, 1)">❯</button>
+                        <div class="carousel-dots">
+                            <span class="dot active" onclick="currentSlide(this, 1)"></span>
+                            <span class="dot" onclick="currentSlide(this, 2)"></span>
+                            <span class="dot" onclick="currentSlide(this, 3)"></span>
+                            <span class="dot" onclick="currentSlide(this, 4)"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="vlog-content">
+                    <h3>GradinnoHack 2025 - Sleepless but Worth It</h3>
+                    <p class="vlog-date">April 5-6, 2025</p>
+                    <p class="vlog-description">Keyboards smashing, caffeine on drip, whiteboards covered in half-baked
+                        diagrams that somehow made sense. That was our life at #GradinnoHack2025, hosted by UNT College
+                        of Engineering. And plot twist… we WON✨ <br> Our project, WeZaap, wasn't just code - it was
+                        chaos, teamwork, and way too many coffee runs.<br>
+                        <b></b>What We Built:</b><br>
+                        ⚡️ Interview questions that adapt to you (RAG + context boost)<br>
+                        ⚡️ Interview sim so real, even Whisper was listening<br>
+                        ⚡️ Feedback that doesn’t sugarcoat (fine-tuned LLM → clean dashboard)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Vlog Post 4 - Loading... -->
+            <div class="vlog-post">
+                <div class="vlog-image">
+                    <img src="/assets/css/images/loading.jpeg" alt="Loading..." />
+                </div>
+                <div class="vlog-content">
+                    <h3>I am a lazy person...</h3>
+                    <p class="vlog-date">September 2024 - April 2025</p>
+                    <p class="vlog-description">I know that there is so much missing, and its loading</p>
+                </div>
+            </div>
+
+            <!-- Vlog Post 3 - THE DEMO DAY! -->
+            <div class="vlog-post">
+                <div class="vlog-image carousel-container">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track">
+                            <img src="/assets/css/images/demoday1.jpeg" alt="Demo Day 1"
+                                class="carousel-image active" />
+                            <img src="/assets/css/images/demoday2.jpeg" alt="Demo Day 2" class="carousel-image" />
+                            <img src="/assets/css/images/demoday3.jpeg" alt="Demo Day 3" class="carousel-image" />
+                            <img src="/assets/css/images/demoday4.jpeg" alt="Demo Day 4" class="carousel-image" />
+                        </div>
+                        <button class="carousel-btn prev-btn" onclick="changeSlide(this, -1)">❮</button>
+                        <button class="carousel-btn next-btn" onclick="changeSlide(this, 1)">❯</button>
+                        <div class="carousel-dots">
+                            <span class="dot active" onclick="currentSlide(this, 1)"></span>
+                            <span class="dot" onclick="currentSlide(this, 2)"></span>
+                            <span class="dot" onclick="currentSlide(this, 3)"></span>
+                            <span class="dot" onclick="currentSlide(this, 4)"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="vlog-content">
+                    <h3>THE DEMO DAY!</h3>
+                    <p class="vlog-date">August 2024</p>
+                    <p class="vlog-description">The big day finally arrived! All the weeks of preparation, late nights,
+                        and hardwork led to this moment.</p>
+                </div>
+            </div>
+
+            <!-- Vlog Post 2 - Berkeley Last Week -->
+            <div class="vlog-post">
+                <div class="vlog-image carousel-container">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track">
+                            <img src="/assets/css/images/lastweek1.jpeg" alt="Berkeley Week 1"
+                                class="carousel-image active" />
+                            <img src="/assets/css/images/lastweek2.jpeg" alt="Berkeley Week 2" class="carousel-image" />
+                            <img src="/assets/css/images/lastweek3.jpeg" alt="Berkeley Week 3" class="carousel-image" />
+                            <img src="/assets/css/images/lastweek4.jpeg" alt="Berkeley Week 4" class="carousel-image" />
+                            <img src="/assets/css/images/lastweek5.jpeg" alt="Berkeley Week 5" class="carousel-image" />
+                        </div>
+                        <button class="carousel-btn prev-btn" onclick="changeSlide(this, -1)">❮</button>
+                        <button class="carousel-btn next-btn" onclick="changeSlide(this, 1)">❯</button>
+                        <div class="carousel-dots">
+                            <span class="dot active" onclick="currentSlide(this, 1)"></span>
+                            <span class="dot" onclick="currentSlide(this, 2)"></span>
+                            <span class="dot" onclick="currentSlide(this, 3)"></span>
+                            <span class="dot" onclick="currentSlide(this, 4)"></span>
+                            <span class="dot" onclick="currentSlide(this, 5)"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="vlog-content">
+                    <h3>Last Week it is!!!</h3>
+                    <p class="vlog-date">August 2024</p>
+                    <p class="vlog-description">Can't believe I've got just one week left here. DEMO DAY is in literally
+                        7 days!! I'm so in love with this place and these people. This is exactly what I wanted in life.
+                        I've been roaming these streets like crazy all month and honestly… not a single dull moment.
+                        It's all going way too fast!!</p>
+                </div>
+            </div>
+
+            <!-- Vlog Post 1 - UC Berkeley -->
+            <div class="vlog-post">
+                <div class="vlog-image">
+                    <img src="\assets\css\images\firstdayucb.jpeg" alt="UC Berkeley Experience" />
+                </div>
+                <div class="vlog-content">
+                    <h3>UC Berkeley – First Day Approaching</h3>
+                    <p class="vlog-date">June, 2024</p>
+                    <p class="vlog-description">Been through a couple of ups and downs to get here, but here we are.
+                        Tomorrow kicks off my first day as an Intern at the University of California, Berkeley. Super
+                        excited to spend my days here, soak up everything this city has to offer, and see where this
+                        journey takes me. Something tells me I'm going to love it here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="width: 1440px; height: 164px; position: relative; background: white; overflow: hidden">
+        <div
+            style="height: 139px; top: 50px; position: center; justify-content: center; display: flex;align-items: center; flex-direction: column; color: black; font-size: 36px; font-family: EB Garamond; font-style: italic; font-weight: 400; line-height: 54px; word-wrap: break-word">
+            This is called “why am I like this?” section of my life -scrappy scrappy scrappy!</div>
+    </div>
+    <div id="wlt">
+        <img style="width: 330px; height: 701px" src="/assets/css/images/eye.jpg" />
+        <img style="width: 584px; height: 701px;align-items: center" src="/assets/css/images/girl.jpg" />
+        <img style="width: 321px; height: 934px; top:300px" class="offset-img" src="/assets/css/images/scratch.jpg" />
+    </div>
+    <br>
+    <div
+        style="width: 1026px; height: 192px; position: relative; background: #D77C7A; overflow: hidden; outline: 1px black solid; outline-offset: -1px">
+        <div
+            style="width: 800px; height: 132px; left: 166px; top: 37px; position: absolute; color: black; font-size: 40px; font-family: EB Garamond; font-style: italic; font-weight: 700; line-height: 60px; word-wrap: break-word">
+            The chaos lives. The creativity thrives. And the productivity? Questionable - but fabulous.</div>
+    </div>
+    <div id="frogcat">
+        <img style="width: 508px; height: 677px" src="/assets/css/images/catmy3.jpeg" />
+        <img style="width: 300px; height: 755px" src="/assets/css/images/unfinished.jpg" />
+        <img style="width: 506px; height: 675px" src="/assets/css/images/frog.jpeg" />
+    </div>
+
+
+
+    <div id="section5" class="section">
+        <div class="text">
+            <h2>Section Five</h2>
+            <p>
+                Told ya!
+            </p>
+            <h1><span style="color: #0015ff;font-size: 168px">LOADING!</span></h1>
+            <h2><span style="color: #fffb00; font-size: 60px"><a href="https://www.ted.com/profiles/31370115"
+                        target="_blank" rel="noopener noreferrer">My mood on shuffle</a></span></h2>
+        </div>
+    </div>
+
+    <script>
+        // Carousel functionality
+        function changeSlide(button, direction) {
+            const carousel = button.closest('.carousel-container');
+            const images = carousel.querySelectorAll('.carousel-image');
+            const dots = carousel.querySelectorAll('.dot');
+            let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+
+            // Remove active class from current image and dot
+            images[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+
+            // Calculate new index
+            currentIndex += direction;
+            if (currentIndex >= images.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+
+            // Add active class to new image and dot
+            images[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        function currentSlide(dot, slideIndex) {
+            const carousel = dot.closest('.carousel-container');
+            const images = carousel.querySelectorAll('.carousel-image');
+            const dots = carousel.querySelectorAll('.dot');
+
+            // Remove active class from all images and dots
+            images.forEach(img => img.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+
+            // Add active class to selected image and dot
+            images[slideIndex - 1].classList.add('active');
+            dots[slideIndex - 1].classList.add('active');
+        }
+
+        // Auto-slide functionality (optional)
+        document.querySelectorAll('.carousel-container').forEach(carousel => {
+            setInterval(() => {
+                const nextBtn = carousel.querySelector('.next-btn');
+                changeSlide(nextBtn, 1);
+            }, 5000); // Change slide every 5 seconds
+        });
+    </script>
+
+</body>
+
+</html>
