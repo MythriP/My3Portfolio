@@ -676,6 +676,14 @@
 				transform: scale(1.2);
 			}
 
+			/* Adjust Pinch logo specifically */
+			#one .features section .icon img[src*="pinch.png"] {
+				object-fit: contain;
+				background-color: #000;
+				padding: 22px;
+				transform: scale(1.05);
+			}
+
 			/* Random but good stuff section styling */
 			#random-stuff {
 				background-color: #000000;
@@ -1029,6 +1037,22 @@
 				<div class="features">
 					<section>
 						<span class="icon">
+							<img src="assets/css/images/pinch.png" alt="Pinch Logo" />
+						</span>
+						<div class="content">
+							<div class="experience-period">Nov 2025 - Present</div>
+							<h2>Technical Associate</h2>
+							<h3>Pinch (YC25)</h3>
+							<ul>
+								<li>Own the end-to-end API in the Python SDK for Pinch’s real-time speech-to-speech translation
+									platform, including a production demo app and public documentation.</li>
+								<li>Troubleshoot and resolve issues by analyzing logs, API behavior, and client integrations across
+									pipelines.</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<span class="icon">
 							<img src="assets/css/images/phylactics.png" alt="Experience Image" />
 						</span>
 						<div class="content">
@@ -1036,8 +1060,8 @@
 							<h2>Software Engineer - AI/ML</h2>
 							<h3>Phylactics</h3>
 							<ul>
-								<li>Recently joined, excited to dive into projects and contribute to building impactful
-									solutions.</li>
+								<li>Benchmarking models on biochemical datasets (1M+ entries) using Python, SQL,
+									NumPy, Pandas, and neural networks; iterate on data pipelines and evaluation.</li>
 							</ul>
 						</div>
 					</section>
