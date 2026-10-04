@@ -61,6 +61,23 @@ const failures = [];
     await page.mouse.move(box.x+box.width/2,box.y+box.height/2);
     await page.waitForFunction(snapshot=>document.querySelector('#portrait').toDataURL() !== snapshot,before);
     assert.equal(await page.locator('#portrait-secret, #portrait-discover').count(),0);
+    const portraitLayout = await page.evaluate(() => {
+      const canvas = document.querySelector('#portrait').getBoundingClientRect();
+      const caption = document.querySelector('#portrait-hint');
+      const cue = caption.getBoundingClientRect();
+      return {
+        captionPosition: getComputedStyle(caption).position,
+        captionFontSize: getComputedStyle(caption).fontSize,
+        captionBelowPortrait: cue.top >= canvas.bottom,
+        selectionColor: getComputedStyle(document.body, '::selection').backgroundColor,
+        selectionText: getComputedStyle(document.body, '::selection').color
+      };
+    });
+    assert.equal(portraitLayout.captionPosition, 'absolute');
+    assert.equal(portraitLayout.captionFontSize, '22px');
+    assert.equal(portraitLayout.captionBelowPortrait, true);
+    assert.equal(portraitLayout.selectionColor, 'rgb(51, 71, 99)');
+    assert.equal(portraitLayout.selectionText, 'rgb(230, 241, 255)');
     assert.ok((await page.evaluate(()=>window.portraitNote.alpha)) < .1, 'The note must stay faint when hovering the center');
     await page.mouse.move(box.x+box.width*.28,box.y+box.height*.66);
     await page.waitForFunction(()=>window.portraitNote.alpha > .9);
@@ -90,6 +107,8 @@ const failures = [];
       await page.setViewportSize({width,height:844});
       await page.evaluate(()=>document.fonts.ready);
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth),true,`Horizontal overflow at ${width}`);
+      assert.equal(await page.locator('#portrait-hint').evaluate(e=>getComputedStyle(e).position),'absolute');
+      assert.equal(await page.locator('#portrait-hint').evaluate(e=>e.getBoundingClientRect().top >= document.querySelector('#portrait').getBoundingClientRect().bottom),true,`Portrait hint should sit below the dots at ${width}px`);
     }
     console.log('PASS: no horizontal overflow at 320, 390, 768, 1024, 1440px');
 

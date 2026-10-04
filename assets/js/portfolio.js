@@ -176,7 +176,7 @@
       }
     }
     fallback.hidden = true; canvas.hidden = false;
-    document.getElementById('portrait-hint').textContent = motion.matches ? "yes, that's me. in dots." : 'go on, move the dots. ↖';
+    document.getElementById('portrait-hint').textContent = motion.matches ? "yes, that's me. in dots." : 'go on, move the dots. ↗';
     wake();
   };
   source.onload = buildPortrait;

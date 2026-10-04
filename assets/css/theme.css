@@ -34,6 +34,7 @@ h3 { font-weight: 700; }
 .portrait-stage { background: transparent; }
 .orbit { border-color: #3b786f; }
 .portrait-sticker { background: #123c3b; border-color: #5bc7b2; color: #a5ffeb; font-size: 13px; }
+::selection { background: #334763; color: #e6f1ff; }
 .ribbon { background: #112c3d; border-color: #2e5960; color: #a6f4e3; }
 .ribbon>div { font-size: 13px; letter-spacing: 1.6px; }
 .side-index { color: #8094b4; font-size: 12px; }
@@ -207,4 +208,3 @@ h3 { font-weight: 700; }
   #platform-game { display: none !important; }
   h2, h3, .experience-body ul, .project-content p { color: #111; }
 }
-

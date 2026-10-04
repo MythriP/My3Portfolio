@@ -447,7 +447,7 @@ em {
 }
 
 .portrait-composition {
-  height:490px;
+  height:530px;
   position:relative;
   align-self:center;
   isolation:isolate;
@@ -523,6 +523,19 @@ em {
 .portrait-sticker span {
   font-size:26px;
   line-height:1.2;
+}
+
+.portrait-caption {
+  position:absolute;
+  left:10%;
+  bottom:-2px;
+  z-index:2;
+  margin:0;
+  color:var(--lilac);
+  font-size:22px;
+  line-height:1.1;
+  transform:rotate(-3deg);
+  white-space:nowrap;
 }
 
 
@@ -1255,7 +1268,7 @@ em {
     padding-top:95px;
   }
   .portrait-composition {
-    height:530px;
+    height:575px;
   }
   .hero h1 {
     font-size:84px;
@@ -1304,7 +1317,7 @@ em {
     letter-spacing:1.3px;
   }
   .portrait-composition {
-    height:425px;
+    height:460px;
   }
 .portrait-star {
     font-size:85px;
@@ -1418,7 +1431,7 @@ em {
     font-size:9px;
   }
   .portrait-composition {
-    height:355px;
+    height:385px;
   }
   .portrait-star {
     font-size:64px;
@@ -1662,7 +1675,7 @@ em {
   .portrait-composition {
     width:90%;
     max-width:365px;
-    height:390px;
+    height:425px;
     margin:40px auto 10px;
   }
   .orbit-one {
@@ -1936,6 +1949,11 @@ em {
   }
   .site-footer>a {
     margin-left:auto;
+  }
+  .portrait-caption {
+    left:8%;
+    bottom:0;
+    font-size:20px;
   }
 
 }
