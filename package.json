@@ -1,0 +1,31 @@
+{
+  "name": "my3portfolio",
+  "version": "1.0.0",
+  "description": "Mythri Popuri's portfolio website",
+  "main": "index.html",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"No tests configured\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MythriP/My3Portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "vercel",
+    "analytics"
+  ],
+  "author": "Mythri Popuri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MythriP/My3Portfolio/issues"
+  },
+  "homepage": "https://github.com/MythriP/My3Portfolio#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
