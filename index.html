@@ -12,7 +12,10 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/portfolio.css?v=10">
   <link rel="stylesheet" href="assets/css/theme.css?v=10">
-  <script src="assets/js/portfolio.js?v=10" defer></script>
+  <link rel="stylesheet" href="assets/css/featured.css?v=4">
+  <script src="assets/js/portfolio.js?v=11" defer></script>
+  <script src="assets/js/featured-sequence.js?v=3" defer></script>
+  <script src="assets/js/featured.js?v=3" defer></script>
   <script src="assets/js/platform-game.js?v=9" defer></script>
   <script src="assets/js/analytics.js" defer></script>
 </head>
@@ -21,11 +24,11 @@
   <header class="site-header">
     <a class="wordmark" href="#intro" aria-label="My3 home">My<span>3</span></a>
     <nav aria-label="Main navigation">
-      <a href="#about">about me</a><a href="#skills">skills</a><a href="#experience">experience</a><a href="#projects">projects</a><a class="daily-nav" href="DailyMy3.html">the unstructured zone <span aria-hidden="true">↗</span></a>
+      <a href="#about">about me</a><a href="#skills">skills</a><a href="#featured">featured</a><a href="#experience">experience</a><a href="#projects">projects</a><a class="daily-nav" href="DailyMy3.html">the unstructured zone <span aria-hidden="true">↗</span></a>
     </nav>
     <button id="game-toggle" class="game-toggle" role="switch" aria-checked="false" aria-controls="platform-game" hidden><span class="toggle-track" aria-hidden="true"><span></span></span><span>game mode <b id="game-state">off</b></span></button>
   </header>
-  <aside class="side-index" aria-label="Page sections"><a href="#intro" aria-label="Introduction" class="active">00</a><a href="#about" aria-label="About me">01</a><a href="#skills" aria-label="Skills">02</a><a href="#experience" aria-label="Work experience">03</a><a href="#projects" aria-label="Projects">04</a><a href="#beyond" aria-label="Beyond work">05</a></aside>
+  <aside class="side-index" aria-label="Page sections"><a href="#intro" aria-label="Introduction" class="active">00</a><a href="#about" aria-label="About me">01</a><a href="#skills" aria-label="Skills">02</a><a href="#featured" aria-label="Featured">03</a><a href="#experience" aria-label="Work experience">04</a><a href="#projects" aria-label="Projects">05</a><a href="#beyond" aria-label="Beyond work">06</a></aside>
   <main id="main">
     <section id="intro" class="hero section-shell">
       <div class="hero-copy">
@@ -66,8 +69,63 @@
         <div class="skill-group"><h3>Evaluation &amp; real-time systems</h3><p>pytest · JUnit · LiveKit · Pipecat · WebRTC</p></div>
       </div>
     </section>
+    <section id="featured" class="section-shell featured-section" aria-labelledby="featured-heading">
+      <div class="section-heading"><p class="eyebrow">03 / FEATURED</p><span class="handwritten">here’s how it comes together ↴</span></div>
+      <h2 id="featured-heading">Featured.</h2>
+      <article class="framework-feature" aria-labelledby="framework-title">
+        <div class="feature-intro">
+          <p class="feature-kicker">INRHYTHM · AI ENGINEERING</p>
+          <h3 id="framework-title">Enterprise agentic framework<span>.</span></h3>
+          <p class="feature-description">A spec is the start. <span>The interesting part is what happens next.</span></p>
+          <p class="feature-contribution">I built validation workflows that connect specifications, AI-generated code, test evidence, and independent review—so engineers can see what’s ready and what still needs work.</p>
+        </div>
+        <div class="framework-demo" aria-label="Animated example of the engineering workflow">
+          <div class="demo-toolbar"><span><i aria-hidden="true"></i> FROM INTENT TO EVIDENCE</span><div class="demo-controls" hidden><button type="button" data-demo-pause>Pause</button><button type="button" data-demo-replay aria-label="Replay workflow animation">Replay ↻</button></div></div>
+          <div class="demo-panels">
+            <div class="demo-editor" aria-label="Illustrative terminal session">
+              <div class="terminal-chrome"><span class="terminal-lights" aria-hidden="true"><i></i><i></i><i></i></span><span>mythri / session-refund</span><span>zsh</span></div>
+              <div class="terminal-session"><span class="terminal-emblem" aria-hidden="true">✳</span><div><strong>Let’s build something.</strong><span>~/engineering/refunds <b>⎇ feature/refunds</b></span></div></div>
+              <div class="terminal-viewport" tabindex="0" aria-label="Animated terminal output. Full description is available in Read the workflow."><div class="terminal-history" aria-hidden="true"><p class="terminal-fallback">❯ Add a refund endpoint. Repeated requests must never issue a second refund.</p><p class="terminal-fallback">Specify → plan → build → test → repair → review.</p></div></div>
+              <div class="terminal-status"><span><i aria-hidden="true"></i> <span data-terminal-status>Ready for a specification</span></span><span data-terminal-counter>0 checks</span></div>
+            </div>
+            <div class="demo-architecture" aria-hidden="true">
+              <div class="demo-panel-label"><span>UNDER THE HOOD</span><span class="graph-status">AGENT EXECUTION MAP</span></div>
+              <div class="workflow-map">
+                <svg viewBox="0 0 560 610" preserveAspectRatio="none" class="workflow-wires" aria-hidden="true">
+                  <path data-wire="plan" d="M213 54H347"/>
+                  <path data-wire="dispatch" d="M420 90V115Q420 130 405 130H295Q280 130 280 145V150"/>
+                  <path data-wire="build" d="M250 212V225H140V236"/>
+                  <path data-wire="build2" d="M310 212V225H420V236"/>
+                  <path data-wire="test" d="M140 308V344"/>
+                  <path data-wire="debug" d="M213 380H347"/>
+                  <path data-wire="repair" class="repair-wire" d="M420 344V329H140V308"/>
+                  <path data-wire="review" d="M140 416V442H280V452"/>
+                  <path data-wire="context" d="M420 308H530V490H365"/>
+                  <path data-wire="human" d="M280 526V560"/>
+                </svg>
+                <div class="workflow-node node-spec" data-node="spec"><span class="node-icon">≡</span><strong>Specification</strong><small data-node-status>Awaiting prompt</small><span class="node-indicator">○</span></div>
+                <div class="workflow-node node-plan" data-node="plan"><span class="node-icon">⑂</span><strong>Planner</strong><small data-node-status>Tasks + dependencies</small><span class="node-indicator">○</span></div>
+                <div class="workflow-node node-dispatch" data-node="dispatch"><span class="node-icon">✳</span><strong>Orchestrator</strong><small data-node-status>Assign scoped work</small><span class="node-indicator">○</span></div>
+                <div class="workflow-node node-code" data-node="build"><span class="node-icon">⌘</span><strong>Developer agent</strong><small data-node-status>Refund endpoint</small><span class="node-indicator">○</span><span class="spawn-tag">SUB-AGENT</span></div>
+                <div class="workflow-node node-tests" data-node="test"><span class="node-icon">⌁</span><strong>Quality gates</strong><small data-node-status>Behavior checks</small><span class="node-indicator">○</span></div>
+                <div class="workflow-node node-build2" data-node="build2"><span class="node-icon">⌘</span><strong>Test agent</strong><small data-node-status>Retry behavior tests</small><span class="node-indicator">○</span><span class="spawn-tag">SUB-AGENT</span></div>
+                <div class="workflow-node node-debug" data-node="debug"><span class="node-icon">⌕</span><strong>Debugger</strong><small data-node-status>Spawned on failure</small><span class="node-indicator">○</span><span class="spawn-tag">SUB-AGENT</span></div>
+                <span class="repair-label">↶ repair request</span>
+                <div class="workflow-node node-review" data-node="review"><span class="node-icon">◇</span><strong>Reviewer sub-agent</strong><small data-node-status>Spawned independently</small><span class="node-indicator">○</span><span class="spawn-tag">NEW SUB-AGENT</span></div>
+                <div class="workflow-node node-human" data-node="human"><span class="node-icon">◎</span><strong>Human review</strong><small data-node-status>Final decision</small><span class="node-indicator">○</span></div>
+              </div>
+              <div class="graph-legend"><span><i></i>Waiting</span><span><i></i>Running</span><span><i></i>Passed</span><span><i></i>Failed</span></div>
+            </div>
+          </div>
+          <div class="demo-caption"><span class="scene-number" data-scene-number>01 / 10</span><div><strong data-scene-title>Type the intent. Press Enter.</strong><p data-scene-description>A plain-language request becomes the specification every agent works from.</p></div><span class="demo-progress" aria-hidden="true"><span></span></span></div>
+          <p class="demo-disclosure">Illustrative orchestration · abbreviated activity labels · sample refund feature</p>
+        </div>
+        <div class="feature-takeaways"><div><span>MY PART</span><p>Validation workflows, reusable skills, CLI hooks, and quality gates.</p></div><div><span>THE CONNECTION</span><p>Carry the spec, code changes, and evidence between agents.</p></div><div><span>WHY IT MATTERS</span><p>Catch gaps before a change reaches human review.</p></div></div>
+        <details class="workflow-transcript"><summary>Read the workflow</summary><ol><li>Write a specification with clear behavior and constraints.</li><li>Audit it, split the work into tasks, and verify the plan against the spec.</li><li>Spawn developer sub-agents for ready implementation and test tasks in isolated workspaces.</li><li>Check the changes and review them independently. In this example, a repeated request creates a second refund, so the test fails and blocks the handoff.</li><li>Spawn a debugger on failure, pass its diagnosis into the retry, rerun quality gates, then request an independent review.</li><li>Bring the specification, changes, and evidence to a human reviewer.</li></ol></details>
+      </article>
+    </section>
     <section id="experience" class="experience-section"><div class="section-shell">
-      <div class="section-heading"><p class="eyebrow">03 / EXPERIENCE</p></div>
+      <div class="section-heading"><p class="eyebrow">04 / EXPERIENCE</p></div>
       <div class="section-title-row"><h2>Work experience.</h2></div>
       <div class="experience-tabs" role="tablist" aria-label="Select a company" hidden></div>
       <div class="experience-list">
@@ -81,7 +139,7 @@
       </div>
     </div></section>
     <section id="projects" class="section-shell projects-section">
-      <div class="section-heading"><p class="eyebrow">04 / PROJECTS</p></div>
+      <div class="section-heading"><p class="eyebrow">05 / PROJECTS</p></div>
       <div class="section-title-row"><h2>Projects.</h2></div>
       <div class="project-grid">
         <article class="project-card project-lilac" id="project-wezaap">
@@ -100,7 +158,7 @@
         <article id="project-sign-language"><img class="project-thumbnail" src="assets/css/images/sld.jpg" alt="Mythri demonstrating signs in her real-time sign language recognition project" loading="lazy"><div><span class="small-tags">06 / COMPUTER VISION</span><h3>Sign Language Recognition</h3><p>Real-time sign language recognition with MobileNet SSD and Inception-SSD. And yes, that’s me putting the model through its paces.</p></div><a href="https://github.com/MythriP?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="Browse repositories for sign language recognition">↗</a></article>
       </div>
     </section>
-    <section id="beyond" class="section-shell beyond-section"><div class="section-heading"><p class="eyebrow">05 / THERE’S A WHOLE HUMAN HERE</p><span class="handwritten">not everything fits in a résumé :)</span></div><div class="beyond-grid"><div><h2>Outside<br>the code.</h2><p>I’m drawn to the intersection of logic and artistry. Sometimes that’s an AI experiment. Sometimes it’s a sketch that takes a completely different turn.</p><div class="little-wins"><a href="https://www.credly.com/badges/1874bf32-b7e3-4d1e-8b56-134734c25ecc" target="_blank" rel="noopener noreferrer"><span>✳</span><div><strong>Claude Certified Architect</strong><small>Foundations · see the credential ↗</small></div></a><div><span>↗</span><div><strong>Sharing what I learn</strong><small>AI workshops &amp; mini hackathons for 50+ students.</small></div></div><div><span>✧</span><div><strong>Always a student</strong><small>M.S. Computer Science, UNT · Merit scholarship, three semesters.</small></div></div></div></div><a class="daily-card" href="DailyMy3.html"><div class="daily-card-top"><span>DAILY MY3</span><span aria-hidden="true">↗</span></div><div class="sketch-preview"><img src="assets/css/images/catmy3.jpeg" alt="Mythri's hand-drawn cat" loading="lazy"><span class="handwritten">probably uncool.<br>definitely me.</span><span class="daily-star" aria-hidden="true">✷</span></div><h3>The unstructured zone.</h3><p>Sketches. Side quests. Life updates.<br>Unfiltered. Unoptimized. Unapologetic.</p><span class="daily-card-link">Enter at your own curiosity <span aria-hidden="true">→</span></span></a></div></section>
+    <section id="beyond" class="section-shell beyond-section"><div class="section-heading"><p class="eyebrow">06 / THERE’S A WHOLE HUMAN HERE</p><span class="handwritten">not everything fits in a résumé :)</span></div><div class="beyond-grid"><div><h2>Outside<br>the code.</h2><p>I’m drawn to the intersection of logic and artistry. Sometimes that’s an AI experiment. Sometimes it’s a sketch that takes a completely different turn.</p><div class="little-wins"><a href="https://www.credly.com/badges/1874bf32-b7e3-4d1e-8b56-134734c25ecc" target="_blank" rel="noopener noreferrer"><span>✳</span><div><strong>Claude Certified Architect</strong><small>Foundations · see the credential ↗</small></div></a><div><span>↗</span><div><strong>Sharing what I learn</strong><small>AI workshops &amp; mini hackathons for 50+ students.</small></div></div><div><span>✧</span><div><strong>Always a student</strong><small>M.S. Computer Science, UNT · Merit scholarship, three semesters.</small></div></div></div></div><a class="daily-card" href="DailyMy3.html"><div class="daily-card-top"><span>DAILY MY3</span><span aria-hidden="true">↗</span></div><div class="sketch-preview"><img src="assets/css/images/catmy3.jpeg" alt="Mythri's hand-drawn cat" loading="lazy"><span class="handwritten">probably uncool.<br>definitely me.</span><span class="daily-star" aria-hidden="true">✷</span></div><h3>The unstructured zone.</h3><p>Sketches. Side quests. Life updates.<br>Unfiltered. Unoptimized. Unapologetic.</p><span class="daily-card-link">Enter at your own curiosity <span aria-hidden="true">→</span></span></a></div></section>
     <section id="contact" class="contact-section"><div class="section-shell"><p class="eyebrow">GOT SOMETHING INTERESTING?</p><h2>Have something in mind?<br><em>Let’s make it happen.</em></h2><a class="contact-email" href="mailto:heymythri@gmail.com">heymythri@gmail.com <span aria-hidden="true">↗</span></a><p>Open to opportunities that challenge me, creative collaborations, and relocating.</p><div class="contact-bottom"><span class="handwritten">See you in the next “what if.” ~ My3</span><div><a href="https://github.com/MythriP" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/mythripopuri" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="tel:+19458676543">Call me ↗</a></div></div></div></section>
   </main>
   <footer class="site-footer"><span>© <span id="year">2026</span> Mythri Popuri</span><span>Made with intent. And a little chaos.</span><a href="#intro">Back to the top ↑</a></footer>

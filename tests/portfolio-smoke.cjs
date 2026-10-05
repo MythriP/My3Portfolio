@@ -33,7 +33,7 @@ const failures = [];
     assert.equal(await page.locator('.experience').count(),7);
     for (const text of ['AI Engineer','LaunchX','University of California, Berkeley','Technical Associate - Developer Experience']) assert.ok(await page.getByText(text,{exact:true}).count(),text);
     assert.equal(await page.getByText('AI Support Engineer',{exact:true}).count(),0);
-    assert.deepEqual(await page.locator('main > section').evaluateAll(items=>items.map(item=>item.id)), ['intro','about','skills','experience','projects','beyond','contact']);
+    assert.deepEqual(await page.locator('main > section').evaluateAll(items=>items.map(item=>item.id)), ['intro','about','skills','featured','experience','projects','beyond','contact']);
     assert.equal(await page.locator('#projects article').count(), 6);
     assert.equal(await page.locator('.role-story, .portrait-coordinate, .side-label').count(), 0);
     assert.equal(await page.locator('.experience-tabs [role=tab]').count(), 7);

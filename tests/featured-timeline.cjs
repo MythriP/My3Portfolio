@@ -1,0 +1,31 @@
+const assert=require('node:assert/strict');
+const {stages,duration,frameAt}=require('../assets/js/featured-sequence.js');
+const afterOutput=(i,j)=>frameAt(stages[i].start+stages[i].submit+(j+1)*800);
+assert.equal(frameAt(0).typed,0);
+assert.equal(frameAt(2000).submitted,false);
+assert.ok(frameAt(2000).typed>0);
+assert.equal(frameAt(stages[0].submit).submitted,true);
+assert.equal(afterOutput(0,2).nodes.spec.state,'passed');
+assert.equal(afterOutput(2,3).nodes.plan.state,'passed');
+assert.equal(afterOutput(4,0).nodes.build.state,'spawned');
+assert.equal(afterOutput(4,1).nodes.build2.state,'spawned');
+assert.equal(afterOutput(5,2).nodes.test.state,'failed');
+assert.equal(afterOutput(5,2).phase,'failed');
+assert.equal(afterOutput(5,2).nodes.human.state,'waiting');
+assert.equal(afterOutput(6,0).wires.repair,'error');
+assert.equal(afterOutput(6,3).nodes.build.state,'passed');
+assert.equal(afterOutput(7,2).nodes.test.state,'passed');
+assert.equal(afterOutput(8,0).nodes.review.state,'spawned');
+assert.equal(afterOutput(8,2).nodes.review.state,'running');
+assert.equal(afterOutput(8,3).nodes.review.state,'passed');
+assert.equal(frameAt(duration).nodes.human.state,'running','Human approval must never be fabricated');
+assert.equal(frameAt(duration).complete,true);
+assert.equal(frameAt(duration+1000).index,9);
+for(let t=0;t<=duration;t+=100){const f=frameAt(t);assert.ok(f.typed>=0&&f.typed<=stages[f.index].command.length);}
+console.log(`PASS: ${stages.length} stages; typing → Enter → failure → repair → passing tests → reviewer spawn → human decision (${duration/1000}s).`);
+
+assert.ok(stages.slice(1).every(s=>s.automatic&&s.typing===0&&s.submit===0));
+assert.equal(afterOutput(6,0).nodes.debug.state,'spawned');
+assert.equal(afterOutput(6,1).nodes.debug.state,'passed');
+assert.ok(stages.slice(1).every(s=>!s.command.includes('--')));
+console.log('PASS: automatic activity labels, developer sub-agents, and failure-triggered debugger.');

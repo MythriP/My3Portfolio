@@ -16,7 +16,7 @@
       });
     }
   }, { rootMargin: '-20% 0px -55% 0px' });
-  ['intro', 'about', 'skills', 'experience', 'projects', 'beyond'].forEach(id => sectionObserver.observe(document.getElementById(id)));
+  ['intro', 'about', 'skills', 'featured', 'experience', 'projects', 'beyond'].forEach(id => sectionObserver.observe(document.getElementById(id)));
 
   // Company tabs enhance ordinary articles; every role stays readable without JS.
   const experiencePanels = [...document.querySelectorAll('.experience')];

@@ -46,3 +46,46 @@ Run `python3 -m http.server 8765 --bind 127.0.0.1` from the project root and ope
 Additional browser checks confirmed two full cards/four compact rows, equal My/3 font sizes, no wordmark star, and compact game controls on phones. Desktop/full-page and mobile screenshots were visually inspected. `git diff --check` passes. Original DailyMy3 headings/paragraphs were checked against Git verbatim during the redesign.
 
 Portrait refinement: scattered dots assemble over approximately 2.25 seconds on reload, with reduced-motion bypass. Local facial contrast brings out eyes, nose, and mouth without adding color. The hidden note has zero opacity until assembly finishes and the visitor deliberately explores it. Browser title is “Mythri Popuri”; the favicon is 🙃. Entrance, reload, timing, and reduced-motion checks passed.
+
+## Featured workflow (October 2026)
+
+Added one Featured case study between Skills and Experience. `featured.css` and
+`featured.js` are scoped to the new section; DailyMy3 remains unchanged. The
+illustrative refund specification animates through planning, scoped agents,
+independent review, repair, and a human handoff. This is a local animation, not a
+live agent execution or a client recording. Contribution copy is grounded in
+`Mythri_Career_Context_Concise.md`; no new outcome metrics are asserted.
+
+Playback begins when the demo enters the viewport, pauses offscreen or in a
+background tab, and ends after one pass. Pause and Replay controls are available.
+Reduced-motion visitors receive a still view; an HTML workflow transcript is
+available without JavaScript. The timeline regression check is
+`node tests/featured-timeline.cjs`.
+
+### Terminal revision
+
+Replaced the editor cards with a continuous terminal session. Every command is
+typed, followed by an Enter cue and staggered output. Commands use yellow,
+failures red, and successful checks green. The diagram follows specification,
+planning, orchestration, build/test agents, a failing retry test, repair, passing
+tests, and an independently spawned reviewer. The final state awaits human
+review; it never claims an actual release or approval. The 10-stage sequence is
+deterministic and testable in `featured-sequence.js`.
+
+### Source-grounded orchestration revision
+
+Read the supplied `workbench-main (2).zip` without executing its contents.
+`lib/cmd/run.sh` spawns developer agents for ready tasks (with dependency/file
+conflict checks), invokes `gates_run` after completion, and invokes a debugger
+on failed quality gates. `lib/shared.sh` feeds diagnosis into recovery;
+`lib/cmd/review.sh` implements a separate review command. Test execution is a
+quality gate, not a dedicated test-agent role. The animation now reflects these
+distinctions, including separate developer sub-agents for example tasks and a
+failure-triggered debugger.
+
+Only the initial request is typed/submitted. Subsequent short labels are
+automatically played orchestration activities, not literal shell commands.
+The sequence compresses planning, execution, retry, and review into an
+illustrative session; the repository does not establish that one initial
+prompt automatically invokes every separate command. The example and outcome
+remain fictional and labeled as an illustration. No ZIP content is published.
