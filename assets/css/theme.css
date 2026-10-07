@@ -208,3 +208,89 @@ h3 { font-weight: 700; }
   #platform-game { display: none !important; }
   h2, h3, .experience-body ul, .project-content p { color: #111; }
 }
+
+/* Company rail beside the selected role, with a vertical keyboard tab order. */
+@media screen {
+  .experience-section > .section-shell { display: grid; grid-template-columns: 170px minmax(0, 1fr); column-gap: 36px; }
+  .experience-section .section-heading, .experience-section .section-title-row { grid-column: 1 / -1; }
+  .experience-tabs { flex-direction: column; align-self: start; overflow: visible; gap: 0; border: 0; border-left: 2px solid #38506f; padding: 0; }
+  .experience-tabs button { flex: none; text-align: left; white-space: normal; border-bottom: 0; border-left: 2px solid transparent; margin-left: -2px; padding: 16px 20px; }
+  .experience-tabs button[aria-selected=true] { border-left-color: var(--lilac); }
+  .experience-list { min-width: 0; }
+  .experience-panel-heading { padding-top: 0; flex-wrap: wrap; gap: 16px; }
+  .experience-panel-heading .experience-date { margin-left: 0; }
+  .experience-body { padding: 0 0 20px; }
+  .experience-body ul { line-height: 1.75; }
+}
+@media screen and (max-width: 600px) {
+  .experience-section > .section-shell { grid-template-columns: 100px minmax(0, 1fr); column-gap: 18px; }
+  .experience-tabs button { padding: 14px 10px; font-size: 13px; }
+  .experience-panel-heading { display: flex; align-items: flex-start; flex-direction: column; }
+  .experience-heading > strong { font-size: 21px; }
+  .experience-body ul { padding-left: 17px; font-size: 15px; }
+  .experience-body .tags { gap: 6px; }
+}
+@media screen {
+  .experience-tabs[hidden] + .experience-list { grid-column: 1 / -1; }
+}
+@media screen and (max-width: 600px) {
+  .experience-panel-heading .experience-logo { flex: none; }
+}
+.experience-body ul { font-size: 19px; line-height: 1.8; }
+.experience-body li + li { margin-top: 16px; }
+@media screen and (max-width: 600px) {
+  .experience-body ul { font-size: 16px; line-height: 1.75; }
+  .experience-body li + li { margin-top: 13px; }
+}
+
+/* Experience rail and impact stories follow Gazi’s side-by-side rhythm. */
+@media screen {
+  .experience-tabs {
+    border: 0;
+    border-right: 1px solid #38506f;
+    padding: 0 18px 0 0;
+    gap: 2px;
+  }
+  .experience-tabs button {
+    text-align: left;
+    border: 0;
+    border-radius: 0;
+    padding: 13px 12px;
+    background: transparent !important;
+    color: #b4c2dc;
+    font-size: 15px;
+  }
+  .experience-tabs button[aria-selected=true] {
+    color: var(--lilac);
+    box-shadow: inset -2px 0 var(--lilac);
+  }
+  .experience-tabs button:hover { color: var(--lilac); }
+  .experience-body ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #b4c2dc;
+  }
+  .experience-body li { position: relative; padding-left: 28px; }
+  .experience-body li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--mint);
+    font-size: 18px;
+    line-height: inherit;
+  }
+  .experience-body li::marker { content: ''; }
+  .experience-body li + li { margin-top: 17px; }
+  .experience-body strong { color: #e6f1ff; font-weight: 600; }
+}
+@media screen and (max-width: 600px) {
+  .experience-section > .section-shell { grid-template-columns: 100px minmax(0, 1fr); column-gap: 18px; }
+  .experience-tabs { padding-right: 8px; }
+  .experience-tabs button { padding: 14px 8px; font-size: 12px; }
+  .experience-body ul { font-size: 15px; line-height: 1.75; }
+  .experience-body li { padding-left: 20px; }
+  .experience-body li + li { margin-top: 14px; }
+}

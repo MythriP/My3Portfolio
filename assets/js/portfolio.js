@@ -16,7 +16,7 @@
       });
     }
   }, { rootMargin: '-20% 0px -55% 0px' });
-  ['intro', 'about', 'skills', 'featured', 'experience', 'projects', 'beyond'].forEach(id => sectionObserver.observe(document.getElementById(id)));
+  ['intro', 'about', 'skills', 'experience', 'featured', 'projects', 'beyond'].forEach(id => sectionObserver.observe(document.getElementById(id)));
 
   // Company tabs enhance ordinary articles; every role stays readable without JS.
   const experiencePanels = [...document.querySelectorAll('.experience')];
@@ -51,8 +51,8 @@
     tab.addEventListener('click', () => activateExperience(panel.id));
     tab.addEventListener('keydown', event => {
       let next;
-      if (event.key === 'ArrowRight') next = (index + 1) % experiencePanels.length;
-      if (event.key === 'ArrowLeft') next = (index - 1 + experiencePanels.length) % experiencePanels.length;
+      if (event.key === 'ArrowDown') next = (index + 1) % experiencePanels.length;
+      if (event.key === 'ArrowUp') next = (index - 1 + experiencePanels.length) % experiencePanels.length;
       if (event.key === 'Home') next = 0;
       if (event.key === 'End') next = experiencePanels.length - 1;
       if (next !== undefined) { event.preventDefault(); activateExperience(experiencePanels[next].id, true); }
