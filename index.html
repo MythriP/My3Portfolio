@@ -10,13 +10,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/portfolio.css?v=10">
+  <link rel="stylesheet" href="assets/css/portfolio.css?v=12">
   <link rel="stylesheet" href="assets/css/theme.css?v=11">
-  <link rel="stylesheet" href="assets/css/featured.css?v=10">
+  <link rel="stylesheet" href="assets/css/featured.css?v=15">
+  <link rel="stylesheet" href="assets/css/case-study.css?v=4">
   <script src="assets/js/portfolio.js?v=12" defer></script>
   <script src="assets/js/featured-sequence.js?v=3" defer></script>
   <script src="assets/js/featured.js?v=3" defer></script>
   <script src="assets/js/platform-game.js?v=9" defer></script>
+  <script src="assets/js/case-study.js?v=2" defer></script>
   <script src="assets/js/analytics.js" defer></script>
 </head>
 <body>
@@ -103,7 +105,7 @@
             <div class="demo-editor" aria-label="Illustrative terminal session">
               <div class="terminal-chrome"><span class="terminal-lights" aria-hidden="true"><i></i><i></i><i></i></span><span>mythri / session-refund</span><span>zsh</span></div>
               <div class="terminal-session"><span class="terminal-emblem" aria-hidden="true">✳</span><div><strong>Let’s build something.</strong><span>~/engineering/refunds <b>⎇ feature/refunds</b></span></div></div>
-              <div class="terminal-viewport" tabindex="0" aria-label="Animated terminal output. Full description is available in Read the workflow."><div class="terminal-history" aria-hidden="true"><p class="terminal-fallback">❯ Add a refund endpoint. Repeated requests must never issue a second refund.</p><p class="terminal-fallback">Specify → plan → build → test → repair → review.</p></div></div>
+              <div class="terminal-viewport" tabindex="0" aria-label="Animated terminal output for an illustrative engineering workflow."><div class="terminal-history" aria-hidden="true"><p class="terminal-fallback">❯ Add a refund endpoint. Repeated requests must never issue a second refund.</p><p class="terminal-fallback">Specify → plan → build → test → repair → review.</p></div></div>
               <div class="terminal-status"><span><i aria-hidden="true"></i> <span data-terminal-status>Ready for a specification</span></span><span data-terminal-counter>0 checks</span></div>
             </div>
             <div class="demo-architecture" aria-hidden="true">
@@ -138,21 +140,19 @@
           <div class="demo-caption"><span class="scene-number" data-scene-number>01 / 10</span><div><strong data-scene-title>Type the intent. Press Enter.</strong><p data-scene-description>A plain-language request becomes the specification every agent works from.</p></div><span class="demo-progress" aria-hidden="true"><span></span></span></div>
           <p class="demo-disclosure">Illustrative orchestration · abbreviated activity labels · sample refund feature</p>
         </div>
-        <details class="workflow-transcript"><summary>Read the workflow</summary>
-          <p class="workflow-intro">Here’s what happens after someone asks for a refund endpoint that never issues a second refund for the same request.</p>
-          <ol>
-            <li><strong>Turn the request into a specification.</strong> The workflow makes the expected behavior explicit: a repeated request must return the original result and cannot trigger another payment.</li>
-            <li><strong>Plan the work.</strong> A planner checks the requirements, identifies dependencies and edge cases, then breaks the change into tasks with clear completion checks.</li>
-            <li><strong>Assign focused agents.</strong> The orchestrator gives implementation and test tasks to separate agents, with only the relevant code, task state, and instructions for each one.</li>
-            <li><strong>Build and test in parallel.</strong> One agent implements the endpoint while another writes checks for first-time and repeated requests. Automated quality gates run against the change.</li>
-            <li><strong>Show a real failure.</strong> In this example, a repeated request creates a second refund. The test fails in red and blocks the handoff instead of letting the defect pass quietly.</li>
-            <li><strong>Bring in a debugger.</strong> A failure can spawn a separate agent to inspect the failing test, implementation, and relevant evidence, then suggest a targeted repair.</li>
-            <li><strong>Recheck the repair.</strong> The workflow reruns the failed check and related quality gates. Passing checks turn green; a remaining failure keeps the change blocked.</li>
-            <li><strong>Request an independent review.</strong> A reviewer sub-agent checks the implementation against the specification and test evidence, then reports gaps separately from the implementation agent.</li>
-            <li><strong>Leave the decision with a person.</strong> The specification, code changes, review, and test results are gathered for a human to decide whether the change is ready.</li>
-          </ol>
-        </details>
       </article>
+
+      <div class="agent-projects highlight-agent-projects" aria-label="Independent work highlight">
+        <article class="agent-card agent-card--case" aria-labelledby="agent-card-1">
+          <img class="agent-card-art" src="assets/images/continuum-card.svg" alt="A long-running case moves through its steps, survives a crash, and resumes without repeating the fix." width="600" height="360" loading="lazy">
+          <p class="agent-card-meta">INDEPENDENT WORK · LONG-RUNNING AGENT FRAMEWORK</p>
+          <h3 id="agent-card-1">Continuum<span>.</span></h3>
+          <p class="agent-card-subtitle">Built to pick up where it left off.</p>
+          <p class="agent-card-description">Built a Google ADK framework for durable, multi-step agent workflows. Persistent sessions restore progress after crashes; idempotent operations prevent duplicate results. Classified retries, model fallback, and reusable feedback rules keep long-running work moving.</p>
+          <p class="agent-card-tags">Google ADK · Durable Execution · Experience-Informed Rules</p>
+          <div class="agent-card-footer"><a class="agent-card-link" href="https://github.com/MythriP/continuum" target="_blank" rel="noopener noreferrer">Explore Continuum on GitHub <span aria-hidden="true">↗</span></a><button type="button" class="agent-card-link case-trigger" data-case-open="case-continuum" aria-haspopup="dialog">Read the case study <span aria-hidden="true">↗</span></button><small>Context, decisions, video and results</small></div>
+        </article>
+      </div>
       <article id="featured-pinch" class="pinch-feature" aria-labelledby="pinch-feature-title">
         <div class="feature-intro pinch-feature-copy">
           <p class="feature-kicker">Pinch</p>
@@ -177,24 +177,96 @@
         </div>
       </article>
     </section>
+      <dialog id="case-continuum" class="case-dialog" aria-labelledby="case-continuum-title">
+        <button type="button" class="case-close" aria-label="Close the Continuum case study">✕</button>
+        <div class="case-scroll">
+          <p class="case-meta">Independent build · 2026 · Long-running agent framework</p>
+          <h2 class="case-title" id="case-continuum-title">Continuum<span>.</span></h2>
+          <p class="case-lede">A durable, evidence-led agent framework for long-running work: it investigates a case, waits when information is incomplete, resumes with context, and brings a clear recommendation to a person.</p>
+          <div class="case-metric"><strong>&lt;1%</strong><span>Production target: materially incorrect recommendations among cases presented as ready for review.</span></div>
+          <ul class="case-tags" aria-label="Skills and technologies">
+            <li>Python</li><li>Google ADK</li><li>Experience learning</li><li>Durable execution</li><li>Human-in-the-loop</li><li>Evaluation gates</li>
+          </ul>
+          <div class="case-grid">
+            <section><h3>Context</h3><p>Long-running operational work does not always arrive with complete information. A useful agent needs to investigate carefully, preserve its place while it waits, and return to a case without losing the thread. Continuum explores that challenge through a financial-reconciliation reference workflow built with fictional data.</p></section>
+            <section><h3>What I built</h3><p>I built Continuum on Google ADK as a framework for durable, multi-step agents. It turns incoming work into a case, gathers and checks evidence, pauses when more information is needed, resumes with context, and prepares a recommendation for human review. Accepted corrections can inform future runs through an evaluation gate.</p></section>
+            <section><h3>Engineering decisions</h3><p>I kept investigation and verification as distinct steps, made waiting and resuming part of the workflow, and left approval with a person. The local reference implementation uses SQLite. Its production architecture is designed for Google Cloud, with managed services supporting scheduled work, durable state, incoming evidence, and model access.</p></section>
+            <section><h3>Production success targets</h3><ul class="case-stats">
+              <li><strong>&lt;1%</strong> materially incorrect recommendations among cases presented as ready for review</li>
+              <li><strong>0</strong> duplicate or unauthorized actions</li>
+              <li><strong>95%</strong> of recommendations accepted without substantive analyst correction</li>
+            </ul></section>
+            <section><h3>How I would measure them</h3><p>Compare recommendations with analyst decisions, measure corrections against all reviewed recommendations, and reconcile every proposed action with its final recorded outcome. Review-ready time and safe escalation rates show whether the framework makes the work more useful without pressuring the agent to guess.</p></section>
+            <section><h3>Evaluation</h3><p>The reference workflow is exercised on synthetic reconciliation cases, including incomplete evidence, ambiguous findings, interruptions, and recovery. Production targets are intentionally separated from those evaluation results; the targets require measurement against real operating baselines.</p></section>
+          </div>
+          <figure class="case-video">
+            <p class="case-video-label">ARCHITECTURE &amp; DATA FLOW · 63 SEC</p>
+            <video src="assets/videos/continuum-architecture.mp4?v=3" poster="assets/videos/continuum-architecture-poster.jpg?v=3" controls muted playsinline loop preload="metadata" width="1920" height="1080" aria-describedby="case-video-desc"></video>
+            <figcaption id="case-video-desc">The components and how a case moves through investigation, verification, waiting, human review, recovery, and a gated lesson. It ends with the architecture designed for Google Cloud.</figcaption>
+          </figure>
+          <p class="case-note">Illustrative walkthrough using fictional data.</p>
+          <div class="case-links">
+            <a href="assets/case-studies/continuum-case-study.md" download="continuum-case-study.md">Download case study (.md) <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </dialog>
     <section id="projects" class="section-shell projects-section">
       <div class="section-heading"><p class="eyebrow">05 / PROJECTS</p></div>
       <div class="section-title-row"><h2>Projects.</h2></div>
       <div class="project-grid">
         <article class="project-card project-lilac" id="project-wezaap">
-          <div class="project-art interview-art" aria-hidden="true"><div class="mini-window"><div class="window-bar"><span>● ● ●</span><span>we zaap!</span></div><p class="mini-eyebrow">YOUR NEXT INTERVIEW, BUT LESS SCARY.</p><div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="chat-bubble">Okay, let's try that answer again. ↗</div><span class="feedback-chip">A little practice. A little confidence.</span></div><span class="art-spark">✦</span></div>
-          <div class="project-content"><div class="project-meta"><span>01 / APPLIED AI</span><span>PERSONAL PROJECT</span></div><h3>WeZaap!</h3><p class="project-subtitle">An interview buddy with a little intelligence.</p><p>Built an AI mock interview platform with retrieval-augmented context, real-time speech transcription, and automated feedback. A place to practice before the real “tell me about yourself.”</p><div class="tags"><span>RAG</span><span>Whisper API</span><span>Conversational AI</span></div><a class="project-link" href="https://we-zaap-cur.vercel.app/" target="_blank" rel="noopener noreferrer">Meet your interviewmate <span>↗</span></a></div>
+          <div class="project-art wezaap-award-art">
+            <img src="assets/images/wezaap-hackathon.jpg" alt="The WeZaap team holding their hackathon awards" width="1080" height="960" loading="lazy">
+            <span class="wezaap-award-label">GRADINNOHACK 2025 · WINNER</span>
+          </div>
+          <div class="project-content">
+            <div class="project-meta"><span>01 / APPLIED AI</span><span>HACKATHON WINNER</span></div>
+            <h3>WeZaap!</h3>
+            <p class="project-subtitle">Hackathon-winning interview practice.</p>
+            <p>Built a multimodal mock-interview platform where candidates practice with voice and video, then get transcripts and AI feedback to make their next answer stronger.</p>
+            <div class="tags"><span>RAG</span><span>Speech AI</span><span>Multimodal</span></div>
+            <div class="project-links">
+              <a class="project-link" href="https://we-zaap-cur.vercel.app/login" target="_blank" rel="noopener noreferrer">Try WeZaap <span>↗</span></a>
+              <a class="project-link" href="https://github.com/MythriP/WeZaapCur" target="_blank" rel="noopener noreferrer">View the code <span>↗</span></a>
+            </div>
+          </div>
         </article>
-        <article class="project-card project-peach" id="project-toxicology">
-          <div class="project-art gan-art" aria-hidden="true"><span class="gan-label">A SMALL DATASET. A BIGGER POSSIBILITY.</span><div class="gan-diagram"><div class="data-cloud">· • ·<br>• · •<br>· • ·</div><span>→</span><div class="gan-core">GAN<span>generate · learn · repeat</span></div><span>→</span><div class="data-cloud dense">••••<br>••••<br>••••</div></div><div class="data-caption"><strong>60,000</strong><span>synthetic toxicological records</span></div></div>
-          <div class="project-content"><div class="project-meta"><span>02 / MACHINE LEARNING</span><span>RESEARCH PROJECT</span></div><h3>Predictive Toxicology using GANs</h3><p class="project-subtitle">More data. More possibility.</p><p>Created a generative pipeline producing 60,000 synthetic toxicological records. Explored how generated data can expand a limited dataset for predictive toxicology research.</p><div class="tags"><span>Generative AI</span><span>GANs</span><span>Synthetic data</span></div><a class="project-link" href="https://github.com/MythriP/Predictive-Toxicology-using-Generative-Adversarial-Networks/tree/main/AnimalGAN-main%20(2)/AnimalGAN-main" target="_blank" rel="noopener noreferrer">Explore the experiment <span>↗</span></a></div>
+        <article class="project-card project-peach" id="project-source-to-screen">
+          <div class="project-art source-art" aria-hidden="true">
+            <div class="source-art-heading"><span>AI / ML RESEARCH</span><i>→</i><span>REVIEWED VIDEO</span></div>
+            <div class="source-pipeline">
+              <div class="source-stage"><small>01</small><strong>Discover</strong><span>news + papers</span></div>
+              <i aria-hidden="true">↘</i>
+              <div class="source-stage"><small>02</small><strong>Review</strong><span>human approval</span></div>
+              <i aria-hidden="true">↙</i>
+              <div class="source-stage"><small>03</small><strong>Generate</strong><span>script + media</span></div>
+              <i aria-hidden="true">→</i>
+              <div class="source-stage source-stage-final"><small>04</small><strong>Render</strong><span>9:16 video</span></div>
+            </div>
+            <div class="source-art-footer"><span>PYTHON</span><span>AGENTS</span><span>REMOTION</span></div>
+          </div>
+          <div class="project-content"><div class="project-meta"><span>02 / MULTI-AGENT SYSTEM</span><span>INDEPENDENT BUILD</span></div><h3>Source-to-Screen Workflow</h3><p class="project-subtitle">Research in. Reviewed videos out.</p><p>Built a multi-agent pipeline that finds AI/ML research, routes selected topics through human review, and turns approved picks into narrated 9:16 videos through scripting, media, voiceover, and Remotion rendering.</p><div class="tags"><span>Python · FastAPI</span><span>Multi-agent systems</span><span>Remotion</span></div><a class="project-link" href="https://github.com/MythriP/Source-to-Screen-Workflow" target="_blank" rel="noopener noreferrer">Explore the workflow <span>↗</span></a></div>
         </article>
       </div>
-      <div class="more-projects">
-        <article id="project-analytics"><img class="project-thumbnail" src="assets/css/images/gcp3.jpg" alt="Academic performance analytics project" loading="lazy"><div><span class="small-tags">03 / DATA ANALYTICS</span><h3>Academic Performance Analytics</h3><p>Explored student performance with Google Cloud and Tableau, finding trends and preparing data for statistical analysis.</p></div><a href="https://github.com/MythriP?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="Browse repositories for academic performance analytics">↗</a></article>
-        <article id="project-covid"><img class="project-thumbnail" src="assets/css/images/cnn.jpg" alt="COVID-19 image classification project" loading="lazy"><div><span class="small-tags">04 / COMPUTER VISION</span><h3>COVID-19 Image Classification</h3><p>An academic project exploring DenseNet and ResNet for X-ray and CT image classification.</p></div><a href="https://github.com/MythriP?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="Browse repositories for COVID-19 image classification">↗</a></article>
-        <article id="project-security"><img class="project-thumbnail" src="assets/css/images/cyrp.jpg" alt="Cryptographic file security project" loading="lazy"><div><span class="small-tags">05 / SOFTWARE ENGINEERING</span><h3>Cryptographic File Security</h3><p>An RSA encryption system for data protection, including a self-extracting archive for deployment.</p></div><a href="https://github.com/MythriP/Cryptographic-File-Security-System" target="_blank" rel="noopener noreferrer" aria-label="View Cryptographic File Security repository">↗</a></article>
-        <article id="project-sign-language"><img class="project-thumbnail" src="assets/css/images/sld.jpg" alt="Mythri demonstrating signs in her real-time sign language recognition project" loading="lazy"><div><span class="small-tags">06 / COMPUTER VISION</span><h3>Sign Language Recognition</h3><p>Real-time sign language recognition with MobileNet SSD and Inception-SSD. And yes, that’s me putting the model through its paces.</p></div><a href="https://github.com/MythriP?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="Browse repositories for sign language recognition">↗</a></article>
+      <div class="agent-projects" aria-label="Agentic and applied AI projects">
+        <article class="agent-card" aria-labelledby="agent-card-2">
+          <img class="agent-card-art" src="assets/images/persistent-memory.svg" alt="Layered memory with selective retrieval of preferences and approved examples." width="600" height="360" loading="lazy">
+          <p class="agent-card-meta">03 / MEMORY SYSTEMS · IN DEVELOPMENT</p>
+          <h3 id="agent-card-2">Persistent Agent Memory<span>.</span></h3>
+          <p class="agent-card-subtitle">The right context, beyond a single session.</p>
+          <p class="agent-card-description">Designing a selective memory system for verified knowledge, user preferences, and approved examples. Focused retrieval, memory consolidation, and retention limits keep useful context available without storing every interaction.</p>
+          <p class="agent-card-tags">SQLite · Context Management · Memory Consolidation</p>
+          <div class="agent-card-footer"><span class="agent-card-link" role="link" aria-disabled="true">Explore the memory architecture <span aria-hidden="true">↗</span></span><small>Link coming soon</small></div>
+        </article>
+        <article class="agent-card" aria-labelledby="agent-card-3">
+          <img class="agent-card-art" src="assets/images/rufus-office.svg" alt="Concept illustration of the Rufus job matching dashboard and a reviewed resume." width="600" height="360" loading="lazy">
+          <p class="agent-card-meta">04 / APPLIED AI · WORKING PROTOTYPE</p>
+          <h3 id="agent-card-3">Rufus Office<span>.</span></h3>
+          <p class="agent-card-subtitle">Your career context. A focused application workflow.</p>
+          <p class="agent-card-description">A local job-search command center that brings discovery, evidence-based matching, tailored resumes, and independent review into one workflow—with human approval at the key decisions.</p>
+          <p class="agent-card-tags">Job Discovery · Resume Tailoring · Human Review</p>
+          <div class="agent-card-footer"><span class="agent-card-link" role="link" aria-disabled="true">Step into Rufus Office <span aria-hidden="true">↗</span></span><small>Link coming soon</small></div>
+        </article>
       </div>
     </section>
     <section id="beyond" class="section-shell beyond-section"><div class="section-heading"><p class="eyebrow">06 / THERE’S A WHOLE HUMAN HERE</p><span class="handwritten">not everything fits in a résumé :)</span></div><div class="beyond-grid"><div><h2>Outside<br>the code.</h2><p>I’m drawn to the intersection of logic and artistry. Sometimes that’s an AI experiment. Sometimes it’s a sketch that takes a completely different turn.</p><div class="little-wins"><a href="https://www.credly.com/badges/1874bf32-b7e3-4d1e-8b56-134734c25ecc" target="_blank" rel="noopener noreferrer"><span>✳</span><div><strong>Claude Certified Architect</strong><small>Foundations · see the credential ↗</small></div></a><div><span>↗</span><div><strong>Sharing what I learn</strong><small>AI workshops &amp; mini hackathons for 50+ students.</small></div></div><div><span>✧</span><div><strong>Always a student</strong><small>M.S. Computer Science, UNT · Merit scholarship, three semesters.</small></div></div></div></div><a class="daily-card" href="DailyMy3.html"><div class="daily-card-top"><span>DAILY MY3</span><span aria-hidden="true">↗</span></div><div class="sketch-preview"><img src="assets/css/images/catmy3.jpeg" alt="Mythri's hand-drawn cat" loading="lazy"><span class="handwritten">probably uncool.<br>definitely me.</span><span class="daily-star" aria-hidden="true">✷</span></div><h3>The unstructured zone.</h3><p>Sketches. Side quests. Life updates.<br>Unfiltered. Unoptimized. Unapologetic.</p><span class="daily-card-link">Enter at your own curiosity <span aria-hidden="true">→</span></span></a></div></section>
